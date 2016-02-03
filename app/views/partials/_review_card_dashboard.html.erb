@@ -1,7 +1,7 @@
 <li>
   <div class="card">
     <div class="card-title">
-      <h5>Item: <%= link_to "#{review.item.title}", item_path(review.item) %></h5>
+      <h5>Item: <%= link_to "#{review.item.title}", "#") %></h5>
     </div>
     <div class="card-content center">
       <p>
@@ -13,7 +13,7 @@
         </div>
       </p>
       <p>Review: <%= review.text %></p>
-      <p><%= link_to "Delete Review", item_review_path(review.item_id, review), method: :delete %></p>
+      <p><%= link_to "Delete Review", "#"), method: :delete %></p>
     </div>
   </div>
 </li>

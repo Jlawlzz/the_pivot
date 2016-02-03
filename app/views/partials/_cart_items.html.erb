@@ -5,7 +5,7 @@
   <td><%= item.travesty_title %></td>
   <td><%= number_to_currency(item.price) %></td>
   <td class ="cart-qty" id="<%= "item_#{item.id}_qty" %>" >
-    <%= form_for(:qty_update_data, url: cart_item_path(item.id), method: "patch") do |f| %>
+    <%= form_for(:qty_update_data, url: "#", method: "patch") do |f| %>
       <%= f.label :quantity %>
       <div class="container center">
       <%= f.text_field :quantity, value: item.qty %>
@@ -15,5 +15,5 @@
     <% end %>
   </td>
   <td id= "<%= "item_#{item.id}_line_ttl" %>" > <%= number_to_currency(item.line_total_price) %></td>
-  <td><%= link_to "Remove", cart_item_path(item.id), method: :delete %></td>
+  <td><%= link_to "Remove", "#", method: :delete %></td>
 </tr>

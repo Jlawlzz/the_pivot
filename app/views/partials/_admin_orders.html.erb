@@ -4,11 +4,11 @@
 	  <td><%= order.created_at %></td>
 	  <td><%= number_to_currency(order.total_price) %></td>
 
-	  <td><%= link_to "Order ##{"%07d" % order.id.to_s}", order_path(order) %></td>
+	  <td><%= link_to "Order ##{"%07d" % order.id.to_s}", "#" %></td>
 
 		<td>
-			<%= link_to "Cancel", order_path(order, status: "cancelled"), method: :patch if order.status == "paid" || order.status == "ordered" %>
-			<%= link_to "Mark as paid", order_path(order, status: "paid"), method: :patch if order.status == "ordered" %>
-			<%= link_to "Mark as completed", order_path(order, status: "completed"), method: :patch if order.status == "paid" %>
+			<%= link_to "Cancel", "#", method: :patch if order.status == "paid" || order.status == "ordered" %>
+			<%= link_to "Mark as paid", "#", method: :patch if order.status == "ordered" %>
+			<%= link_to "Mark as completed", "#", method: :patch if order.status == "paid" %>
 		</td>
 </tr>

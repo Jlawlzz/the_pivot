@@ -25,7 +25,7 @@
           <div class="right-align">
               <h4>Total Price: <%=number_to_currency(@cart.total_price)%></h4>
               <button class="btn waves-effect waves-light">
-                <%= button_to "Checkout", orders_path, method: :post, data: { cart: @cart } %>
+                <%= button_to "Checkout", "#", method: :post, data: { cart: @cart } %>
                 <i class="material-icons right">send</i>
               </button>
           </div>
