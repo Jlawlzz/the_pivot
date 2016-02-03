@@ -13,11 +13,11 @@
 
         <li> <%= link_to "Logged in as #{current_user.first_name}", '/dashboard'%></li>
 
-        <li> <%= link_to "Logout", "#", method: :delete %></li>
+        <li> <%= link_to "Logout", logout_path, method: :delete %></li>
         <% else %>
         <li class = "hoverable"><%= link_to "Login", "#" %></li>
 
-        <li class = "hoverable"><%= link_to "Create Account", "#"%></li>
+        <li class = "hoverable"><%= link_to "Create Account", new_user_path %></li>
         <% end %>
       </ul>
       <ul id="nav-mobile" class="side-nav">

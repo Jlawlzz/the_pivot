@@ -1,3 +1,5 @@
+
+
 <% @admins = []%>
 <% 3.times do |t| %>
   <% @admins << "Admin#{t}" %>
@@ -13,7 +15,7 @@
   <div class="col s12"  style="padding-top:10vh;">
     <div class="card">
       <div class="card-content center">
-        <h2>Robot Business1</h2>
+        <h2> <%= @business.name %> </h2>
         <h4>We make humans do the jobs you don't want to.</h4>
       </div>
     </div>
