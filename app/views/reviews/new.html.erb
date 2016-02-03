@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-content">
       <span class="card-title">Write a Review for <%= @item.title %></span>
-      <%= form_for(@review, url: item_reviews_path(params[:item_id])) do |f| %>
+      <%= form_for(@review, url: "#") do |f| %>
       <%= f.label :text %>
       <%= f.text_field :text %>
 
