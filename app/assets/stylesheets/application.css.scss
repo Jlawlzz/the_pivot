@@ -14,6 +14,8 @@
  *= require_self
  */
 
+
+
  #gif-overlay {
    background-color: rgba(10, 10, 10, 0.5);
    background-size: cover;
@@ -132,6 +134,10 @@ body {
    width: 10vw;
  }
 
+.card-button {
+  padding-top: 30px;
+}
+
  .card .card-action a {
    color:white;
    margin-right:0px;
@@ -177,7 +183,7 @@ h1 {
 }
 
 .jungle {
-  font-family: 'Jungle';
+  font-family: 'Audiowide', cursive;
   font-size: 45px;
 }
 
@@ -188,12 +194,6 @@ h1 {
 nav .brand-logo {
 }
 
-@font-face {
-  font-family: 'Jungle';
-  src: font-url( asset-path('JungleClean.ttf') );
-  font-weight: normal;
-  font-style: normal;
-}
 
 div#bp_ad {
     position: absolute;
