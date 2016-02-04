@@ -26,7 +26,8 @@ Rails.application.routes.draw do
     # resources :orders, only: [:index]
   end
   # resources :reviews, only: [:index]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :update]
   # resources :businesses, only: [:new, :create]
-  resources :businesses, only: [:new, :create, :show] #try using path or params for slug, not as
+  resources :businesses, only: [:new, :create]
+  resources :businesses, only: [:show, :index]
 end

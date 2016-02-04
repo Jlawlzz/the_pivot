@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203225416) do
+ActiveRecord::Schema.define(version: 20160204004412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "business_users", force: :cascade do |t|
+    t.integer "business_id"
+    t.integer "user_id"
+  end
+
+  add_index "business_users", ["business_id"], name: "index_business_users_on_business_id", using: :btree
+  add_index "business_users", ["user_id"], name: "index_business_users_on_user_id", using: :btree
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
@@ -90,6 +98,8 @@ ActiveRecord::Schema.define(version: 20160203225416) do
     t.integer  "role",            default: 0
   end
 
+  add_foreign_key "business_users", "businesses"
+  add_foreign_key "business_users", "users"
   add_foreign_key "items", "travesties"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"

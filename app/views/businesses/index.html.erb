@@ -1,0 +1,25 @@
+
+<div class="container center">
+<div class="card">
+	<div class="card-content center">
+
+		<br>
+		<br>
+		<div class="filter">
+			<h4>Click a Businesses to Join:</h4>
+		</div>
+		<table class="bordered centered responsive-table">
+			<thead>
+				<tr>
+					<th data-field="BusinessName">Business Name</th>
+					<th data-field="Join">Join?</th>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render partial: "businesses", collection: @businesses, as: :business %>
+		</tbody>
+	</table>
+</div>
+</div>
+</div>
