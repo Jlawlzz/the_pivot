@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   # get '/cart', to: 'cart_items#show'
 
   get '/dashboard', to: 'users#show'
-  # get '/login', to: 'sessions#new'
-  # post '/login', to: 'sessions#create'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/doomsday', to: 'sessions#doomsday'
 
