@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160204223524) do
 
   create_table "humans", force: :cascade do |t|
     t.string   "scum_name"
-    t.text     "bio"
+    t.string   "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
