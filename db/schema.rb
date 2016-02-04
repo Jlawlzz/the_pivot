@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160204173544) do
     t.string   "url"
   end
 
-  create_table "human", force: :cascade do |t|
+  create_table "humans", force: :cascade do |t|
     t.string   "scum_name"
     t.string   "bio"
     t.datetime "created_at", null: false
