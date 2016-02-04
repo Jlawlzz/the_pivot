@@ -2,6 +2,7 @@ class BusinessesController < ApplicationController
 
   def index
     @businesses = Business.all
+    @humans = nil
   end
 
   def new

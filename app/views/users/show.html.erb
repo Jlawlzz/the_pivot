@@ -20,16 +20,15 @@
     </div>
   </div>
 
-  <% @people = []%>
-  <% 3.times do |t| %>
-    <% @people << "Person #{t}" %>
-  <% end %>
-
   <div class="card">
     <div class="grid-item-container">
       <h2 class="center">Current Employees</h2>
       <div class="row">
-          <%= render partial: "partials/grid_item", collection: @people, as: :person %>
+        <% if @humans %>
+          <%= render partial: "partials/grid_item", collection: @humans, as: :human %>
+        <% else %>
+          <h2> You have no Employees, visit Human Shop to bid </h2>
+        <% end %>
       </div>
     </div>
   </div>
