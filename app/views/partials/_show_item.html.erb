@@ -3,22 +3,30 @@
     <div class="row">
     <div class="col m4">
       <div style="width:300px;height:240px;overflow:hidden;">
-        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/a/a1/Harry_Fain,_coal_loader._Inland_Steel_Company,_Wheelwright_%5E1_%26_2_Mines,_Wheelwright,_Floyd_County,_Kentucky._-_NARA_-_541452.jpg", width: "300px",  id: "#{item.id}_item", class: "item-show" %>
+        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/a/a1/Harry_Fain,_coal_loader._Inland_Steel_Company,_Wheelwright_%5E1_%26_2_Mines,_Wheelwright,_Floyd_County,_Kentucky._-_NARA_-_541452.jpg", width: "300px",  id: "#{auction.id}_auction", class: "item-show" %>
       </div>
 
       <div class="row card-button">
+        <div id='<%= "#{auction.id}_bid" %>'>
+        <h5>Current Bid: $<%= auction.winning_bid %> </h5>
+        <h5>Time Remaining 1:07</h5>
+        <%= form_for @bid do |f| %>
+          <%= f.label "Bid Amount" %>
+          <%= f.text_field "Bid Amount" %>
+        <% end %>
         <button class="btn waves-effect waves-light red" type="submit" name="action">
-          <%= button_to "Bid Now!", "#"  %>
+          <%= link_to "Bid Now!", "/items/1", style: "color: white"  %>
         </button>
+      </div>
       </div>
     </div>
     <div class="col m8">
       <div class="item-description">
-        <span class="card-title"><b>Human Worker1</b></span>
+        <span class="card-title"><b> <%= auction.human.scum_name %> </b></span>
         <ul>
           <li><b>Department:</b> Sanitation</li>
           <li><b>Skills:</b>  Fastidious, Dependable</li>
-          <li><b>Bio:</b><p class="custom-para">I work hard and have been working since a wee child.</p></li>
+          <li><b>Bio:</b><p class="custom-para"> <%= auction.human.bio %> </p></li>
         </ul>
       </div>
       </div>

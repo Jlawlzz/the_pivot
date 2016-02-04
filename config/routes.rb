@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     # resources :humans, only: [:index]
   # end
 
+  resources :auctions, only: [:index, :show]
+
   namespace :admin do
     get '/dashboard', to: 'base#show'
     resources :businesses, only: [:show]

@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204173544) do
+ActiveRecord::Schema.define(version: 20160204225625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auctions", force: :cascade do |t|
+    t.integer  "winning_bid", default: 0
+    t.integer  "human_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "status",      default: "live"
+  end
+
+  add_index "auctions", ["human_id"], name: "index_auctions_on_human_id", using: :btree
 
   create_table "business_users", force: :cascade do |t|
     t.integer "business_id"
@@ -32,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160204173544) do
     t.string   "url"
   end
 
-  create_table "humans", force: :cascade do |t|
+  create_table "human", force: :cascade do |t|
     t.string   "scum_name"
     t.string   "bio"
     t.datetime "created_at", null: false
@@ -105,6 +115,7 @@ ActiveRecord::Schema.define(version: 20160204173544) do
     t.integer  "role",            default: 0
   end
 
+  add_foreign_key "auctions", "human"
   add_foreign_key "business_users", "businesses"
   add_foreign_key "business_users", "users"
   add_foreign_key "items", "travesties"

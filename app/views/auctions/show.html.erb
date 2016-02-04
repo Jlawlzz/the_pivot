@@ -1,0 +1,10 @@
+<%= render partial: 'partials/show_item', locals: { auction: @auction } %>
+
+<div class="center">
+  <h5 class="review-text"> <a href="#">Back to Humans</a></h5>
+</div>
+<ul>
+  <div class="container">
+    <%= render partial: 'partials/review_card', collection: @reviews, as: :review %>
+  </div>
+</ul>
