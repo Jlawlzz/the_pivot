@@ -10,7 +10,7 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.create(business_params)
-    redirect_to business_path(@business)
+    redirect_to admin_business_path(@business)
   end
 
   def show

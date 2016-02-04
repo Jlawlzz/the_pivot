@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = current_user
     @business = Business.find(params[:format])
     BusinessUser.create(business_id: @business.id, user_id: current_user.id)
-    redirect_to business_path(@business)
+    redirect_to admin_business_path(@business)
   end
 
   private

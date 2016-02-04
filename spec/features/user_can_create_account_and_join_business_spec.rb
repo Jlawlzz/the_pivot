@@ -42,7 +42,7 @@ RSpec.feature "user can create account from home" do
 
     click_link "Join 2 Business"
 
-    expect(current_path).to eq business_path(businesses[0])
+    expect(current_path).to eq admin_business_path(businesses[0])
     expect(page).to have_content "2 Business"
     expect(page).to_not have_content "3 Business"
     expect(page).to have_content "Jordan"

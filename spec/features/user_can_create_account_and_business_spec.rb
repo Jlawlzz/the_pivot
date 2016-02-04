@@ -41,7 +41,7 @@ RSpec.feature "user can create account from home" do
     click_button "Submit"
 
     business = Business.last
-    expect(current_path).to eq business_path(business)
+    expect(current_path).to eq admin_business_path(business)
     expect(page).to have_content "Hastalavista"
 
   end
