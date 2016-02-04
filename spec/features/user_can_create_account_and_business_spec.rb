@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.feature "user can create account from home" do
   scenario "Unregistered user creates account and creates business" do
 
+    humans = create_list(:human, 30)
+
     visit '/'
 
     expect(page).to have_content("Login")
@@ -39,7 +41,7 @@ RSpec.feature "user can create account from home" do
     fill_in "Business Name:", with: "Hastalavista"
     fill_in "Description:", with: "You won't hate working for us... as much"
     click_button "Submit"
-
+    
     business = Business.last
     expect(current_path).to eq admin_business_path(business)
     expect(page).to have_content "Hastalavista"

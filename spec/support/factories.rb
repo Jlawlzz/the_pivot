@@ -17,6 +17,20 @@ FactoryGirl.define do
   sequence :url do |n|
     "#{n}_business"
   end
+
+  factory :human do
+    scum_name
+    bio
+  end
+
+  sequence :scum_name do |n|
+    "#{n}_scum_name"
+  end
+
+  sequence :bio do |n|
+    "#{n}_bio"
+  end
+
   #
   # sequence :travesty_title, travesty_titles.cycle do |n|
   #   "#{n}"

@@ -4,6 +4,7 @@ RSpec.feature "user can create account from home" do
   scenario "Unregistered user creates account and creates business" do
 
     businesses = create_list(:business, 2)
+    humans = create_list(:human, 30)
 
     visit '/'
 

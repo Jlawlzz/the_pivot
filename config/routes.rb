@@ -11,13 +11,13 @@ Rails.application.routes.draw do
   get '/doomsday', to: 'sessions#doomsday'
 
   # resources :cart_items, only: [:create, :update, :destroy]
-  resources :items, only: [:index, :show] do
+  resources :humans, only: [:index, :show] do
     # resources :reviews, only: [:new, :create, :destroy]
   end
   # resources :orders, only: [:create, :index, :show, :update]
   # resources :order_items, only: [:create]
   # resources :travesties, only: [:show, :index], param: :slug do
-    # resources :items, only: [:index]
+    # resources :humans, only: [:index]
   # end
 
   namespace :admin do
