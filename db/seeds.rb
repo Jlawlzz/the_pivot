@@ -32,13 +32,13 @@ class Seed
   end
 
   def generate_humans
-    human = 100.times do |i|
-      Human.create!(
+    100.times do |i|
+      human = Human.create!(
         scum_name: Faker::Name.first_name,
         bio: Faker::Lorem.sentence(10)
       )
+      puts "Human #{i}: #{human.scum_name} created!"
     end
-    puts "Human #{i}: #{human.scum_name} created!"
   end
 
   def generate_businesses
