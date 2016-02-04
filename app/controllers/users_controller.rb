@@ -27,6 +27,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = current_user
+    @business = Business.find(params[:format])
+    BusinessUser.create(business_id: @business.id, user_id: current_user.id)
+    redirect_to business_path(@business)
+  end
+
   private
 
   def set_user
@@ -35,7 +42,7 @@ class UsersController < ApplicationController
       :last_name,
       :username,
       :password,
-      :password_confirmation
+      :password_confirmation,
     )
   end
 
