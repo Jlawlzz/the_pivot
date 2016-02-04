@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   # resources :reviews, only: [:index]
   resources :users, only: [:new, :create, :update]
   # resources :businesses, only: [:new, :create]
-  resources :businesses, only: [:new, :create]
+  resources :businesses, only: [:new, :create, :index]
   resources :businesses, only: [:show, :index]
 end
