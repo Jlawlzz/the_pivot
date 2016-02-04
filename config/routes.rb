@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # get '/cart', to: 'cart_items#show'
-  # get '/dashboard', to: 'users#show'
-  # get '/login', to: 'sessions#new'
-  # post '/login', to: 'sessions#create'
-  # delete '/logout', to: 'sessions#destroy'
+
+  get '/dashboard', to: 'users#show'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   get '/doomsday', to: 'sessions#doomsday'
 
   # resources :cart_items, only: [:create, :update, :destroy]
@@ -25,5 +26,7 @@ Rails.application.routes.draw do
     # resources :orders, only: [:index]
   end
   # resources :reviews, only: [:index]
-  # resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create]
+  # resources :businesses, only: [:new, :create]
+  resources :businesses, only: [:new, :create, :show] #try using path or params for slug, not as
 end
