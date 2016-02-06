@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "admin sees business name in url path" do
+RSpec.feature "multitenancy business name in url path" do
   scenario "business admin visits business dashboard sees business name in url" do
 
     business = create(:business)
@@ -19,14 +19,27 @@ RSpec.feature "admin sees business name in url path" do
     expect(current_path).to eq "/admin/#{business.url}/#{business.id}"
   end
 
-end
-
-RSpec.feature "non-registered user sees business name in url path" do
   scenario "non-registered user visits business dashboard sees business name in url" do
-
     business = create(:business)
 
     visit business_path(business.url, business.id)
 
     expect(current_path).to eq "/#{business.url}/#{business.id}"
+  end
+
+  scenario "non-registered user visits business dashboard sees business name in url" do
+    business = create(:business)
+
+    visit business_path(business.url, business.id)
+
+    expect(current_path).to eq "/#{business.url}/#{business.id}"
+  end
+
+  scenario "non-registered user visits path for non-registered business redirected to business index" do
+    businesses = create_list(:business, 5)
+
+    visit business_path("wrong_url", businesses[0].id)
+
+    expect(current_path).to eq businesses_path
+  end
 end

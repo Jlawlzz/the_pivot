@@ -1,4 +1,5 @@
 class BusinessesController < ApplicationController
+  # before_action :business_not_found
 
   def index
     @businesses = Business.all
@@ -15,6 +16,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
+    business_not_found
     @business = Business.find(params[:id])
   end
 

@@ -2,27 +2,25 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  # get '/cart', to: 'cart_items#show'
-
   get '/dashboard', to: 'users#show'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/doomsday', to: 'sessions#doomsday'
-
-  resources :humans, only: [:index, :show] do
-  end
-
   get '/dashboard', to: 'base#show'
+
+  resources :humans, only: [:index, :show]
 
   namespace :admin do
     resources :businesses, only: [:show], path: ':business', as: :business
   end
 
   resources :users, only: [:new, :create, :update]
-  resources :businesses, only: [:new, :create]
-  resources :businesses, only: [:show, :index]
+  resources :businesses, only: [:new, :create, :index]
+  resources :businesses, only: [:show], path: ':business', as: :business
+  
 end
+
 # resources :businesses, only: [:new, :create]
 # resources :items, only: [:new, :create, :index, :destroy]
 # resources :orders, only: [:index]

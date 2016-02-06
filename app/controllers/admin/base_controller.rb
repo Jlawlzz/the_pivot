@@ -8,9 +8,9 @@ class Admin::BaseController < ApplicationController
   end
 
   def business_not_found
-    redirect_to dashboard_path if current_business.nil?
+    redirect_to businesses_path if current_business.nil?
   end
-  
+
   # before_action :require_admin
 
   # def require_admin

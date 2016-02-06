@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   before_action :set_cart, :current_user
+  helper_method :business_not_found
+
+  def business_not_found
+    redirect_to businesses_path if Business.find_by(url: params[:business]).nil?
+  end
 
   def set_cart
     @cart = Cart.new(session[:cart])
