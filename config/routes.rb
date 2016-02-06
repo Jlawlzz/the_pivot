@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   # resources :businesses, only: [:new, :create]
   resources :businesses, only: [:new, :create]
   resources :businesses, only: [:show, :index]
+  resources :bids, only: [:create]
 end

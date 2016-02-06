@@ -1,0 +1,19 @@
+<div class="col s4">
+  <div class="card z-depth-5 card-stack">
+
+      <div class="card-content center">
+        <h2> <%= business.name %> </h2>
+        <h2> Mr's Business </h2>
+        <h4> <%= business.description %> </h4>
+        <div id="bid">
+        <%= simple_form_for :business, url: auctions_path, method: :get do |f| %>
+        <%= f.input :id, :as => :hidden, :input_html => { :id => business.id } %>
+          <button class="btn waves-effect waves-light red" type="submit" name="action">
+            <%= f.submit "Bid for #{business.name}"  %>
+          </button>
+        <% end %>
+      </div>
+      </div>
+    </div>
+
+</div>

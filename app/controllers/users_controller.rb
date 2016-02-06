@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       redirect_to admin_dashboard_path if @user.admin?
     else
       flash[:error] = {message: "Must be signed in to see dashboard.", color: "red"}
-      redirect_to items_path
+      redirect_to '/'
     end
   end
 
