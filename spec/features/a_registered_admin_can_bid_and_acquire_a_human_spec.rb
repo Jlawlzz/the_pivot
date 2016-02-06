@@ -24,8 +24,8 @@ RSpec.feature "admin can bid and acquire human" do
     end
 
     expect(current_path).to eq auctions_path
-
-    click_on "Bid Now"
+    save_and_open_page
+    click_on "Bid Now!"
 
     expect(current_path).to eq auctions_path(auction)
 
