@@ -1,61 +1,23 @@
 require 'rails_helper'
 
-RSpec.feature "user can view live auctions" do
-  scenario "they see their live auctions" do
+RSpec.feature "user can view live auction" do
+  scenario "Unregistered user sees humans on auctions page" do
 
-    humans = create_list(:human, 2)
+    human1 = Human.create(scum_name:"Barry" , bio:"work work work work work" , url:"http://www.humansfordogs.com/wp-content/uploads/2010/03/6a00d8341c153053ef012876a0b6c5970c-pi.jpeg")
+    human2 = Human.create(scum_name:"Lisa" , bio:"work work work work work" , url:"http://exit78.com/wp-content/uploads//2009/08/eyes_of_the_great_depression_035.jpg")
 
-    business = create(:business)
+    auction1 = Auction.new
+    auction2 = Auction.new
+    auction1.human = human1
+    auction2.human = human2
+    auction1.save
+    auction2.save
 
-    2.times do |t|
-      Auction.create(human_id: humans[t].id)
-    end
+    visit auctions_path
+    expect(page).to have_content("Barry")
 
-    auctions = Auction.all
+    expect(page).to have_content("Lisa")
 
-    admin = User.create(first_name: "jordan",
-                        last_name: "guy",
-                        username: "admin",
-                        password: "password",
-                        role: 1)
-
-    business.users << admin
-
-    login(admin)
-
-    bid = Bid.create(amount: 50, business_id: business.id, auction_id: auctions[0].id, user_id: admin.id)
-
-	  visit '/'
-
-    click_on "Live Auctions"
-
-    expect(current_path).to eq live_auctions_path
-
-    expect(page).to have_content("Your current live auctions:")
-    expect(page).to have_content(humans[0].scum_name)
-    expect(page).to_not have_content(humans[1].scum_name)
-    expect(page).to have_content(bid.amount)
-    expect(page).to have_content(auctions[0].winning_bid)
   end
 
-  scenario "returns collection of auctions and users highest bid for that auction" do
-
-      auction = Auction.create
-
-      admin = User.create(first_name: "jordan",
-                          last_name: "guy",
-                          username: "admin",
-                          password: "password",
-                          role: 1)
-
-      login(admin)
-
-      Bid.create(amount: 25, auction_id: auction.id, user_id: admin.id)
-      bid = Bid.create(amount: 50, auction_id: auction.id, user_id: admin.id)
-
-      live_auctions = admin.live_auctions
-
-      expect(live_auctions.first[:user_bid]).to eq (50)
-      expect(live_auctions.first[:auction]).to eq (auction)
-    end
 end
