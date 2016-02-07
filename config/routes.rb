@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :auctions, only: [:index, :show]
 
+  resources :bids, only: [:create]
+
   namespace :admin do
     resources :businesses, only: [:show], path: ':business', as: :business
   end

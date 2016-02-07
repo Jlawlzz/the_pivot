@@ -14,10 +14,9 @@
 
   <div class="col s12"  style="padding-top:5vh;">
 
-</div>
+
     <div class="card" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
       <div class="grid-item-container">
-        <div class="row">
           <div style="padding-top:15px;">
             <div style="border-style:solid;border-color:#00aaaa;width:200px;display:inline-block;border-width:thin;">
             <%= link_to "Create a Business", new_business_path(@business), style: "color:#00aaaa;"%>
@@ -25,12 +24,12 @@
             <div style="border-style:solid;border-color:#00aaaa;width:275px;display:inline-block;border-width:thin;">
             <%= link_to "Join an Existing Business", businesses_path, style: "color:#00aaaa;" %>
           </div>
-          <div style="padding-top:15px;">
+          <div class="row" style="padding-top:15px;">
             <%= render partial: "admin/businesses/business_grid", collection: current_user.businesses, as: :business %>
           </div>
         </div>
       </div>
-    </div>
+  </div>
   </div>
 
   <div class="card" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
@@ -45,10 +44,4 @@
       </div>
     </div>
   </div>
-
-<!-- <h3 class="center review-text">All Item Reviews for <%= @user.username %>:</h3>
-<ul>
-  <div class="container">
-    <%= render partial: 'partials/review_card_dashboard', collection: @reviews, as: :review %>
-  </div>
-</div> -->
+</div>

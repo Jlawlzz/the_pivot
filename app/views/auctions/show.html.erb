@@ -1,7 +1,7 @@
 <%= render partial: 'show_auction', locals: { auction: @auction, business: @business } %>
 
 <div class="center">
-  <h5 class="review-text"> <a href="#">Back to Humans</a></h5>
+  <%=link_to "Back to Humans", auctions_path %>
 </div>
 <ul>
   <div class="container">
