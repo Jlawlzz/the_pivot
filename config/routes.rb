@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/doomsday', to: 'sessions#doomsday'
   get '/dashboard', to: 'base#show'
   post '/declare_winner', to: 'auctions#declare_winner'
+  get '/live_auctions', to: 'users#live_auctions'
 
   resources :humans, only: [:index, :show]
 
