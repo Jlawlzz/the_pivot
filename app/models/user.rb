@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   has_many :business_users
   has_many :businesses, through: :business_users
 
-  validates :username, presence: true, uniqueness: { message: "%{value} is already taken. Please choose a different username"}
+  validates :username, presence: true, uniqueness: true
+  
   enum role: %w(default admin)
 
   def total_purchased
