@@ -26,17 +26,6 @@ ActiveRecord::Schema.define(version: 20160206004458) do
 
   add_index "auctions", ["human_id"], name: "index_auctions_on_human_id", using: :btree
 
-  create_table "bids", force: :cascade do |t|
-    t.integer  "amount"
-    t.integer  "business_id"
-    t.integer  "auction_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "bids", ["auction_id"], name: "index_bids_on_auction_id", using: :btree
-  add_index "bids", ["business_id"], name: "index_bids_on_business_id", using: :btree
-
   create_table "business_users", force: :cascade do |t|
     t.integer "business_id"
     t.integer "user_id"
@@ -134,8 +123,6 @@ ActiveRecord::Schema.define(version: 20160206004458) do
   end
 
   add_foreign_key "auctions", "human"
-  add_foreign_key "bids", "auctions"
-  add_foreign_key "bids", "businesses"
   add_foreign_key "business_users", "businesses"
   add_foreign_key "business_users", "users"
   add_foreign_key "items", "travesties"

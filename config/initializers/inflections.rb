@@ -18,3 +18,7 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.uncountable %w(human)
 end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular "human", "humans"
+end

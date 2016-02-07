@@ -62,19 +62,7 @@ end
 Seed.start
 
 
-# User.create(
-#   first_name: "Mr",
-#   last_name: "Admin",
-#   username: "admin",
-#   password: "password",
-#   role: 1
-# )
-#
-# travesty = Travesty.create(
-#   title: "Environmental Disaster",
-#   sponsor_image: "bp.jpg",
-#   sponsor_title: "BP"
-# )
+
 #
 # travesty.items.create(
 #   title: "Oil Spill",

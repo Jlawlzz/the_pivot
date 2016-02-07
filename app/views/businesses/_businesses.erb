@@ -1,4 +1,8 @@
 <tr>
 	  <td><%= business.name %></td>
-	  <td><%= link_to "Join #{business.name}", user_path(current_user.id, business), method: :patch %></td>
+		<% if current_user %>
+	  	<td><%= link_to "Join #{business.name}", user_path(current_user.id, business), method: :patch %></td>
+		<% else %>
+	  	<td><%= link_to "Login/Signup", "/" %></td>
+		<% end %>
 </tr>

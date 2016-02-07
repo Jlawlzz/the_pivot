@@ -8,7 +8,7 @@
 #     fill_in "Username", with: admin.username
 #     fill_in "Password", with: admin.password
 #     click_button "Sign In"
-#
+# 
 #     expect(current_path).to eq admin_dashboard_path
 #     expect(page).to have_content "Admin Dashboard"
 #   end

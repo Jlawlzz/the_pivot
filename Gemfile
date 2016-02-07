@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "simple_form"
 
+gem 'faker'
+
 gem 'shoulda-matchers'
 
 gem 'rails_12factor', group: :production

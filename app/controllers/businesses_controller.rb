@@ -1,4 +1,5 @@
 class BusinessesController < ApplicationController
+  # before_action :business_not_found
 
   def index
     @businesses = Business.all
@@ -11,11 +12,11 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.create(business_params)
-    binding.pry
-    redirect_to admin_business_path(@business)
+    redirect_to admin_business_path(@business.url, @business.id)
   end
 
   def show
+    business_not_found
     @business = Business.find(params[:id])
   end
 
