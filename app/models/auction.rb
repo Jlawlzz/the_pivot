@@ -1,6 +1,7 @@
 class Auction < ActiveRecord::Base
   belongs_to :human
   belongs_to :business
+  has_many :bids
 
   def highest_bid?(amount)
     if (high_bid < amount.to_i)

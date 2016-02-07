@@ -17,7 +17,8 @@ class BidsController < ApplicationController
   def set_bid_params
     params.require(:bid).permit(:amount,
                                 business_id: set_business_id,
-                                auction_id: set_auction_id)
+                                auction_id: set_auction_id,
+                                human_id: current_user)
   end
 
   def set_business_id
