@@ -33,6 +33,14 @@ class UsersController < ApplicationController
     redirect_to admin_business_path(@business.url, @business.id)
   end
 
+  def live_auctions
+
+    live_auctions = current_user.auctions.where(status: 'live')
+    @live_auctions = live_auctions.map do |auction|
+      {auction: auction, user_bid: auction.bids.where(user_id: @user.id).last.amount}
+    end
+  end
+
   private
 
   def set_user
