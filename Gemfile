@@ -30,7 +30,6 @@ gem "simple_form"
 
 gem 'faker'
 
-gem 'shoulda-matchers'
 
 gem 'rails_12factor', group: :production
 
@@ -52,8 +51,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem "factory_girl_rails", :require => false
   gem "simplecov"
-  # gem 'better_errors'
-  # gem 'mocha'
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers', '~> 2.0'
 end
 
 group :development do

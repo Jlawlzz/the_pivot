@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207013045) do
+ActiveRecord::Schema.define(version: 20160207193443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 20160207013045) do
     t.datetime "updated_at",                   null: false
     t.string   "status",      default: "live"
     t.integer  "human_id"
+    t.integer  "business_id"
   end
 
+  add_index "auctions", ["business_id"], name: "index_auctions_on_business_id", using: :btree
   add_index "auctions", ["human_id"], name: "index_auctions_on_human_id", using: :btree
 
   create_table "bids", force: :cascade do |t|
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define(version: 20160207013045) do
     t.integer  "role",            default: 0
   end
 
+  add_foreign_key "auctions", "businesses"
   add_foreign_key "auctions", "humans"
   add_foreign_key "bids", "auctions"
   add_foreign_key "bids", "businesses"

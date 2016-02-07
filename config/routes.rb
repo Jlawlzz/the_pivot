@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/doomsday', to: 'sessions#doomsday'
   get '/dashboard', to: 'base#show'
+  post '/declare_winner', to: 'auctions#declare_winner'
 
   resources :humans, only: [:index, :show]
 
