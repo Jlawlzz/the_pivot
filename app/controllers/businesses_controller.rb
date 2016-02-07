@@ -11,6 +11,7 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.create(business_params)
+    binding.pry
     redirect_to admin_business_path(@business)
   end
 

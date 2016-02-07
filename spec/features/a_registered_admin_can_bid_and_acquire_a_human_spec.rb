@@ -15,24 +15,26 @@ RSpec.feature "admin can bid and acquire human" do
 
     business.users << admin
 
-    ApplicationController.any_instance.stub(:current_user).and_return(admin)
+    login(admin)
 
-    visit admin_dashboard_path
+    visit dashboard_path
 
-    within("#bid") do
-      click_on "Bid for #{business.name}"
+    within("#bid_partial") do
+      click_link "Bid Now"
     end
 
     expect(current_path).to eq auctions_path
-    save_and_open_page
-    click_on "Bid Now!"
 
-    expect(current_path).to eq auctions_path(auction)
+    within("#bid") do
+      click_link "Bid Now!"
+    end
+
+    expect(current_path).to eq auction_path(auction)
 
     expect(page).to have_content(human.scum_name)
     expect(page).to have_content(human.bio)
 
-    within("##{auction.id}_bid") do
+    within("#bid") do
       expect(page).to have_content("Current Bid: $0")
       expect(page).to have_button("Bid Now")
       fill_in "Amount", with: "1000"
@@ -40,9 +42,9 @@ RSpec.feature "admin can bid and acquire human" do
     end
 
     expect(Bid.all.count).to eq 1
-    expect(Bid.first.amount).to eq "1000"
-
-    expect(current_path).to eq auctions_path(auction)
+    expect(Bid.first.amount).to eq 1000
+    expect(page).to have_content "You have succesfully placed a bid of 1000!"
+    expect(current_path).to eq auction_path(auction)
     expect(page).to have_content("Current Bid: $1000")
   end
 end

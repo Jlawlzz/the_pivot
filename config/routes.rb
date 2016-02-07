@@ -23,8 +23,7 @@ Rails.application.routes.draw do
   resources :auctions, only: [:index, :show]
 
   namespace :admin do
-    get '/dashboard', to: 'base#show'
-    resources :businesses, only: [:show]
+    resources :businesses, only: [:show], path: ':business', as: :business
     # resources :items, only: [:new, :create, :index, :destroy]
     # resources :orders, only: [:index]
   end
