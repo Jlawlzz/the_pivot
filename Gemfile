@@ -52,6 +52,7 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem "factory_girl_rails", :require => false
+  gem "simplecov"
   # gem 'better_errors'
   # gem 'mocha'
 end
