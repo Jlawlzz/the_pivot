@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   resources :humans, only: [:index, :show]
 
+  resources :auctions, only: [:index, :show]
+
+  resources :bids, only: [:create]
+
   namespace :admin do
     resources :businesses, only: [:show], path: ':business', as: :business
   end
@@ -18,7 +22,6 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :update]
   resources :businesses, only: [:new, :create, :index]
   resources :businesses, only: [:show], path: ':business', as: :business
-  
 end
 
 # resources :businesses, only: [:new, :create]

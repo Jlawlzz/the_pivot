@@ -31,18 +31,8 @@ FactoryGirl.define do
     "#{n}_bio"
   end
 
-  #
-  # sequence :travesty_title, travesty_titles.cycle do |n|
-  #   "#{n}"
-  # end
-  #
-  # factory :travesty do
-  #   title { generate(:travesty_title) }
-  #
-  #   factory :travesty_with_items do
-  #     items { create_list(:item, 4) }
-  #   end
-  # end
+  factory :auction do
+  end
 
   factory :user do
     first_name

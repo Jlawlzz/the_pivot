@@ -17,6 +17,13 @@ Shoulda::Matchers.configure do |config|
  end
 end
 
+def login(user)
+ visit login_path
+ fill_in "Username:", with: user.username
+ fill_in "Password", with: 'password'
+  click_button "Sign In"
+end
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!

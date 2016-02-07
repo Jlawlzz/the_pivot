@@ -7,11 +7,11 @@
         </div>
 
         <div class="row card-button">
-          <div id='<%= "#{auction.id}_bid" %>'>
+          <div id="bid">
             <h5>Current Bid: $<%= auction.winning_bid %> </h5>
             <h5>Time Remaining 1:07</h5>
-            <%= simple_form_for :bid, url: bids_path(auction, business) do |f| %>
-            <%= f.input :amount, as: :string %>
+            <%= simple_form_for :bid, url: bids_path([auction.id, business.id]) do |f| %>
+            <%= f.input :amount, as: :integer %>
             <button class="btn waves-effect waves-light red" type="submit" name="action">
               <%= f.submit "Bid Now" %>
             </button>
