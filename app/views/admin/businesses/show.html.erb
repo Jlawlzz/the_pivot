@@ -27,7 +27,7 @@
   <div class="grid-item-container">
     <h2 class="center">Current Employees</h2>
     <div class="row">
-        <%= render partial: "partials/grid_item", collection: @people, as: :person %>
+        <%= render partial: "employee_grid", collection: @business.humans, as: :human %>
     </div>
   </div>
 </div>
