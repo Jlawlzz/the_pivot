@@ -5,6 +5,7 @@ RSpec.feature "user can create account from home" do
   scenario "Unregistered user creates account and creates business" do
     skip
     businesses = create_list(:business, 2)
+    humans = create_list(:human, 30)
 
     visit '/'
 
@@ -38,14 +39,16 @@ RSpec.feature "user can create account from home" do
       click_link "Join an Existing Business"
     # end
     expect(current_path).to eq businesses_path
-    expect(page).to have_content "2 Business"
-    expect(page).to have_content "3 Business"
 
-    click_link "Join 2 Business"
+    expect(page).to have_content "#{businesses[0].name}"
+    expect(page).to have_content "#{businesses[1].name}"
 
-    expect(current_path).to eq business_path(businesses[0])
-    expect(page).to have_content "2 Business"
-    expect(page).to_not have_content "3 Business"
+    click_link "Join #{businesses[0].name}"
+
+    expect(current_path).to eq admin_business_path(businesses[0].url, businesses[0].id)
+    expect(page).to have_content "#{businesses[0].name}"
+    expect(page).to_not have_content "#{businesses[1].name}"
+
     expect(page).to have_content "Jordan"
 
   end

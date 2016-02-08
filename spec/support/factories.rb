@@ -17,18 +17,22 @@ FactoryGirl.define do
   sequence :url do |n|
     "#{n}_business"
   end
-  #
-  # sequence :travesty_title, travesty_titles.cycle do |n|
-  #   "#{n}"
-  # end
-  #
-  # factory :travesty do
-  #   title { generate(:travesty_title) }
-  #
-  #   factory :travesty_with_items do
-  #     items { create_list(:item, 4) }
-  #   end
-  # end
+
+  factory :human do
+    scum_name
+    bio
+  end
+
+  sequence :scum_name do |n|
+    "#{n}_scum_name"
+  end
+
+  sequence :bio do |n|
+    "#{n}_bio"
+  end
+
+  factory :auction do
+  end
 
   factory :user do
     first_name

@@ -1,0 +1,11 @@
+<%= render partial: 'show_auction', locals: { auction: @auction, business: @business } %>
+
+<%= link_to "End Auction", declare_winner_path([@auction, @business]), method: :post, class: "hidden" %>
+<div class="center">
+  <%=link_to "Back to Humans", auctions_path %>
+</div>
+<ul>
+  <div class="container">
+    <%= render partial: 'partials/review_card', collection: @reviews, as: :review %>
+  </div>
+</ul>

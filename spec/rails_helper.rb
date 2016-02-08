@@ -6,12 +6,15 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'factory_girl_rails'
+require 'simplecov'
 
-Shoulda::Matchers.configure do |config|
- config.integrate do |with|
-   with.test_framework :rspec
-   with.library :rails
- end
+SimpleCov.start("rails")
+
+def login(user)
+ visit login_path
+ fill_in "Username:", with: user.username
+ fill_in "Password", with: 'password'
+  click_button "Sign In"
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }

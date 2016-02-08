@@ -28,7 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "simple_form"
 
-gem 'shoulda-matchers'
+gem 'faker'
+
 
 gem 'rails_12factor', group: :production
 
@@ -36,7 +37,6 @@ gem 'rails_12factor', group: :production
 # gem 'unicorn'
 gem "jquery-slick-rails", '>= 1.5.8.2'
 # gem 'sprockets_better_errors'
-
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -50,8 +50,9 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem "factory_girl_rails", :require => false
-  # gem 'better_errors'
-  # gem 'mocha'
+  gem "simplecov"
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers', '~> 2.0'
 end
 
 group :development do

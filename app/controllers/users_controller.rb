@@ -20,10 +20,9 @@ class UsersController < ApplicationController
       @user = User.find(session[:user_id])
       @reviews = @user.reviews
       @business = Business.new
-      redirect_to admin_dashboard_path if @user.admin?
     else
       flash[:error] = {message: "Must be signed in to see dashboard.", color: "red"}
-      redirect_to items_path
+      redirect_to '/'
     end
   end
 
@@ -31,7 +30,15 @@ class UsersController < ApplicationController
     @user = current_user
     @business = Business.find(params[:format])
     BusinessUser.create(business_id: @business.id, user_id: current_user.id)
-    redirect_to business_path(@business)
+    redirect_to admin_business_path(@business.url, @business.id)
+  end
+
+  def live_auctions
+
+    live_auctions = current_user.auctions.where(status: 'live')
+    @live_auctions = live_auctions.map do |auction|
+      {auction: auction, user_bid: auction.bids.where(user_id: @user.id).last.amount}
+    end
   end
 
   private

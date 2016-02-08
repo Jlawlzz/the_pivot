@@ -1,15 +1,8 @@
 
-
 <% @admins = []%>
 <% 3.times do |t| %>
   <% @admins << "Admin#{t}" %>
 <% end %>
-
-<% @people = []%>
-<% 3.times do |t| %>
-  <% @people << "Person #{t}" %>
-<% end %>
-
 
 <div class = "container">
   <div class="col s12"  style="padding-top:10vh;">
@@ -25,7 +18,7 @@
   <div class="grid-item-container">
     <h2 class="center">Current Admins</h2>
     <div class="row">
-        <%= render partial: "partials/admin_grid", collection: @admins, as: :admin %>
+        <%= render partial: "admin_grid", collection: @admins, as: :admin %>
     </div>
   </div>
 </div>
@@ -34,7 +27,7 @@
   <div class="grid-item-container">
     <h2 class="center">Current Employees</h2>
     <div class="row">
-        <%= render partial: "partials/grid_item", collection: @people, as: :person %>
+        <%= render partial: "employee_grid", collection: @business.humans, as: :human %>
     </div>
   </div>
 </div>

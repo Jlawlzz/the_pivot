@@ -5,27 +5,16 @@
   <% @admins << "Admin#{t}" %>
 <% end %>
 
-<% @people = []%>
-<% 3.times do |t| %>
-  <% @people << "Person #{t}" %>
-<% end %>
-
-
 <div class = "container">
   <div class="col s12"  style="padding-top:10vh;">
-    <div class="card">
-      <div class="card-content center">
-        <h2> Mr's Business </h2>
-        <h4>We make humans do the jobs you don't want to.</h4>
-      </div>
-    </div>
+    <%= render partial: "business_grid", collection: current_user.businesses, as: :business %>
   </div>
 
 <div class="card">
   <div class="grid-item-container">
     <h2 class="center">Current Admins</h2>
     <div class="row">
-        <%= render partial: "partials/admin_grid", collection: @admins, as: :admin %>
+        <%= render partial: "admin_grid", collection: @admins, as: :admin %>
     </div>
   </div>
 </div>
@@ -34,7 +23,11 @@
   <div class="grid-item-container">
     <h2 class="center">Current Employees</h2>
     <div class="row">
-        <%= render partial: "partials/grid_item", collection: @people, as: :person %>
+      <% if @humans %>
+        <%= render partial: "partials/grid_item", collection: @humans, as: :human %>
+      <% else %>
+        <h2> You have no Employees, visit Human Shop to bid </h2>
+      <% end %>
     </div>
   </div>
 </div>
