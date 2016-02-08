@@ -2,7 +2,7 @@
 
   <div class="container">
     <button class="btn waves-effect waves-light red" type="submit" name="action" align="left">
-      <%= link_to "View Humans for Hire", "#", style: "color: white"   %>
+      <%= link_to "View Humans for Hire", auctions_path, style: "color: white" %>
     </button>
 
     <button class="btn waves-effect waves-light red right" type="submit" name="action" valign="right">
@@ -10,14 +10,6 @@
     </button>
   </div>
 
-  <div class="container center">
-   <button class="btn waves-effect waves-light red" type="submit" name="action" align="left">
-     <%= link_to "View Humans for Hire", auctions_path, style: "color: white"   %>
-   </button>
-   <button class="btn waves-effect waves-light red" type="submit" name="action">
-       <%= link_to "View Businesses", "#", style: "color: white" %>
-   </button>
- </div>
   <div class="container center">
     <%= image_tag("terminator_head.png", :alt => "rss feed", :size => "800x600") %>
   </div>
