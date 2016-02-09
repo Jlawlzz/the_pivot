@@ -1,7 +1,7 @@
 <tr>
 	  <td><%= business.name %></td>
 		<% if current_user %>
-	  	<td><%= link_to "Join #{business.name}", user_path(current_user.id, business), method: :patch %></td>
+	  	<td><%= link_to "Join #{business.name}", assign_business_path(business), controller: :users_controller, method: :patch %></td>
 		<% else %>
 	  	<td><%= link_to "Login/Signup", "/" %></td>
 		<% end %>

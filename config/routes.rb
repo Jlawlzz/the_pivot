@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'base#show'
   post '/declare_winner', to: 'auctions#declare_winner'
   get '/live_auctions', to: 'users#live_auctions'
+  patch '/assign_business', to: 'users#assign_business'
 
   resources :humans, only: [:index, :show]
 
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
     resources :businesses, only: [:show], path: ':business', as: :business
   end
 
-  resources :users, only: [:new, :create, :update]
+  resources :users, only: [:new, :create, :update, :edit]
 
   resources :businesses, only: [:new, :create, :index]
   resources :businesses, only: [:show], path: ':business', as: :business
