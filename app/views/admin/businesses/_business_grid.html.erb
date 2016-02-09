@@ -1,13 +1,12 @@
 <div class="col s4">
   <div class="card z-depth-5">
     <div class="card-content center">
-      <%= image_tag "http://qr.hellfroze.net/#{business.name}/qr.png?", style:"height:200px;width:200px;-webkit-filter: invert(100%); filter: invert(100%);"%>
+      <%= image_tag "http://qr.hellfroze.net/#{business.name}/qr.png?", class: 'business-image'%>
         <div class="container" style="width: 100%;height: 60px;color:#00aaaa;">
           <h6><%= business.name %></h6>
         </div>
-      <h5> <%= business.description %> </h5>
       <div id="bid_partial">
-        <%= link_to "Bid Now", {:controller => "auctions", :action => "index", :business_id => business.id }, style: "border-style:solid;border-color:#ff4444;width:225px;display:inline-block;border-width:thin;"%>
+        <%= link_to "Bid Now", {:controller => "auctions", :action => "index", :business_id => business.id }, class: 'styled-button'%>
       </div>
     </div>
   </div>
