@@ -15,7 +15,7 @@
         <div class="card-content center">
           <h5 class="robot"> Recently won humans: </h5>
           <br>
-          <%= render partial: "auction_grid", collection: current_user.auctions[-3..-1], as: :auction %>
+          <%= render partial: "auction_grid", collection: @auctions[-3..-1], as: :auction %>
         </div>
       </div>
     </div>
