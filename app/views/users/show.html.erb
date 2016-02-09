@@ -3,9 +3,19 @@
     <div class="col s12"  style="padding-top:5vh;">
       <div class="card z-depth-5" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
         <div class="card-content center">
-          <h5 class="robot"> <%= @user.first_name %>'s Profile</h5>
+          <h5 class="robot"> <%= current_user.first_name %>'s Profile</h5>
           <br>
-          <h8 class="robot"> Username: <%= @user.username %> </h8>
+          <h8 class="robot"> Username: <%= current_user.username %> </h8>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12"  style="padding-top:5vh;">
+      <div class="card z-depth-5" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
+        <div class="card-content center">
+          <h5 class="robot"> Recently won humans: </h5>
+          <br>
+          <%= render partial: "auction_grid", collection: current_user.auctions, as: :auction %>
         </div>
       </div>
     </div>
@@ -19,6 +29,9 @@
             <div style="border-style:solid;border-color:#00aaaa;width:275px;display:inline-block;border-width:thin;">
             <%= link_to "Join an Existing Business", businesses_path, style: "color:#00aaaa;" %>
           </div>
+          <div style="border-style:solid;border-color:#00aaaa;width:275px;display:inline-block;border-width:thin;">
+            <%= link_to "Edit Profile", edit_user_path(current_user), style: "color:#00aaaa;" %>
+          </div>
           <div class="row" style="padding-top:15px;">
             <%= render partial: "admin/businesses/business_grid", collection: current_user.businesses, as: :business %>
           </div>
@@ -31,8 +44,8 @@
     <div class="grid-item-container">
       <h2 class="center">Current Employees</h2>
       <div class="row">
-        <% if @humans %>
-          <%= render partial: "partials/grid_item", collection: @humans, as: :human %>
+        <% if @business.humans %>
+          <%= render partial: "partials/grid_item", collection: @business.humans, as: :human %>
         <% else %>
           <h2> You have no Employees, visit Human Shop to bid </h2>
         <% end %>
