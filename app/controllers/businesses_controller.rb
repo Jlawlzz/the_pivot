@@ -12,12 +12,13 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.create(business_params)
+    current_user.businesses << @business
+    session[:business_id] = @business.id
     redirect_to admin_business_path(@business.url, @business.id)
   end
 
   def show
     business_not_found
-    # binding.pry
     @business = Business.find(params[:id])
     @auctions = @business.auctions.where.not(status: "fired")
     session[:business_id] = @business.id
