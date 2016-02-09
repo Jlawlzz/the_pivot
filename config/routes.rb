@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :update]
+
   resources :businesses, only: [:new, :create, :index]
   resources :businesses, only: [:show], path: ':business', as: :business
 end
