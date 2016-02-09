@@ -22,4 +22,7 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
+  def current_business
+    @business ||= Business.find(session[:business_id]) if session[:business_id]
+  end
 end

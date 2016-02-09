@@ -1,19 +1,32 @@
 class AuctionsController < ApplicationController
 
+  before_action :set_business
+
   def index
     @auctions = Auction.where(status: "live")
   end
 
   def show
-    @business = Business.find_by(params[:business_id])
     @auction = Auction.find(params[:id])
   end
 
   def declare_winner
-    @auction = Auction.find(params[:format].split('/')[0])
-    @business = Business.find(params[:format].split('/')[1])
+    @auction = Auction.find(params[:format])
+    @business = Business.find(current_business)
     @business.auctions << @auction
     @auction.update_attribute(:status, "closed")
     redirect_to business_path(@business.url, @business.id)
+  end
+
+  private
+
+  def set_business
+    if params[:business_id]
+      @business = Business.find(params[:business_id])
+      session[:business_id] = @business.id
+      @name = @business.name
+    else
+      @name = "Yourself"
+    end
   end
 end
