@@ -4,7 +4,8 @@ class BidsController < ApplicationController
     @auction = Auction.find(set_auction_id)
     if @auction.highest_bid?(params[:bid][:amount])
       bid = Bid.create(set_bid_params)
-      flash[:notice] = {color: "green", message: "You have succesfully placed a bid of #{@auction.winning_bid}!"}
+      @auction.set_high_bid(bid.id)
+      flash[:notice] = {color: "green", message: "You have succesfully placed a bid of #{bid.amount}!"}
       redirect_to auction_path(set_auction_id)
     else
       flash[:error] = {color: "red", message: "Must place bid higher than current high bid."}

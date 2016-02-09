@@ -17,7 +17,7 @@
         <h5 style="padding-left:81px;">Details</h5>
       </div>
       <div id="bid">
-      <h5>Current Bid: $ <%= auction.winning_bid %> </h5>
+      <h5>Current Bid: $<%= auction.high_bid %> </h5>
       <h5>Time Remaining 1:07</h5>
       <button class="btn waves-effect waves-light red" type="submit" name="action">
         <%= link_to "Bid Now!", auction_path(auction), style: "color: white"  %>

@@ -11,22 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207204457) do
+ActiveRecord::Schema.define(version: 20160209034658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "auctions", force: :cascade do |t|
-    t.integer  "winning_bid", default: 0
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "status",      default: "live"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "status",         default: "live"
     t.integer  "human_id"
     t.integer  "business_id"
+    t.integer  "user_id"
+    t.integer  "winning_bid_id"
   end
 
   add_index "auctions", ["business_id"], name: "index_auctions_on_business_id", using: :btree
   add_index "auctions", ["human_id"], name: "index_auctions_on_human_id", using: :btree
+  add_index "auctions", ["user_id"], name: "index_auctions_on_user_id", using: :btree
+  add_index "auctions", ["winning_bid_id"], name: "index_auctions_on_winning_bid_id", using: :btree
 
   create_table "bids", force: :cascade do |t|
     t.integer  "amount"
@@ -60,9 +63,9 @@ ActiveRecord::Schema.define(version: 20160207204457) do
   create_table "humans", force: :cascade do |t|
     t.string   "scum_name"
     t.string   "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "url"
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+    t.string   "url",        default: "https://www.ssa.gov/history/pics/woman50.gif"
   end
 
   create_table "items", force: :cascade do |t|
@@ -131,8 +134,18 @@ ActiveRecord::Schema.define(version: 20160207204457) do
     t.integer  "role",            default: 0
   end
 
+  create_table "winning_bids", force: :cascade do |t|
+    t.integer  "bid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "winning_bids", ["bid_id"], name: "index_winning_bids_on_bid_id", using: :btree
+
   add_foreign_key "auctions", "businesses"
   add_foreign_key "auctions", "humans"
+  add_foreign_key "auctions", "users"
+  add_foreign_key "auctions", "winning_bids"
   add_foreign_key "bids", "auctions"
   add_foreign_key "bids", "businesses"
   add_foreign_key "bids", "users"
@@ -144,4 +157,5 @@ ActiveRecord::Schema.define(version: 20160207204457) do
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "items"
   add_foreign_key "reviews", "users"
+  add_foreign_key "winning_bids", "bids"
 end

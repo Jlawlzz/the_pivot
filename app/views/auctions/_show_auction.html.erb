@@ -8,7 +8,7 @@
 
         <div class="row card-button">
           <div id="bid">
-            <h5>Current Bid: $<%= auction.winning_bid %> </h5>
+            <h5>Current Bid: $<%= auction.high_bid %> </h5>
             <h5>Time Remaining 1:07</h5>
             <%= simple_form_for :bid, url: bids_path(auction.id) do |f| %>
             <%= f.input :amount, as: :integer %>
