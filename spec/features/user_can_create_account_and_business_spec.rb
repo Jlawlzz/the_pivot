@@ -46,6 +46,8 @@ RSpec.feature "user can create account from home" do
     expect(current_path).to eq admin_business_path(business.url, business.id)
     expect(page).to have_content "Hastalavista"
 
+    visit dashboard_path
+    expect(page).to have_content "Hastalavista"
   end
 
   # scenario "is redirected to account page if username already exists" do
