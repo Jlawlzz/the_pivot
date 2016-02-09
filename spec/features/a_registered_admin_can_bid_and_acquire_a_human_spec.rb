@@ -65,12 +65,14 @@ RSpec.feature "admin can bid and acquire human" do
     visit dashboard_path
     click_link "Bid Now"
     click_link "Bid Now!"
+
     within("#bid") do
       fill_in "Amount", with: "1000"
       click_on "Bid Now"
     end
 
     click_on "End Auction"
+    
     visit business_path(business.url, business.id)
     expect(page).to have_content(human.scum_name)
 

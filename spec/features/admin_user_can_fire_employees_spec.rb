@@ -15,14 +15,19 @@ RSpec.feature "admin user can fire employees" do
 
     humans = [Human.first, Human.last]
 
-    visit business_path(business, business.id)
+    visit admin_business_path(business.url, business.id)
 
-    expect(page).to have_content("#{Human.first.name}")
-    expect(page).to have_content("#{Human.last.name}")
+    expect(page).to have_content("#{humans[0].scum_name}")
+    expect(page).to have_content("#{humans[1].scum_name}")
 
-    click_on "#{human.first.name}"
+    click_link "Decomission #{humans[0].scum_name}!"
 
-    expect(page).to not_have_content("Bid Now")
-    expect(page).to have_content()
+    expect(current_path).to eq admin_business_path(business.url, business.id)
+    expect(page).to have_content("#{humans[1].scum_name}")
+    expect(page).to_not have_content("#{humans[0].scum_name}")
+
+    visit auctions_path
+    expect(page).to have_content("#{humans[0].scum_name}")
+    expect(page).to have_content("Current Bid: $ 0")
   end
 end

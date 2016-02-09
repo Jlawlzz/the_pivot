@@ -1,3 +1,3 @@
 class Human < ActiveRecord::Base
-  belongs_to :auction
+  has_many :auctions
 end

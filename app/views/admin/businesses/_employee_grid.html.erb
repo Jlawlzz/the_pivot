@@ -9,7 +9,7 @@
     <div class="card-content center">
       <span class="card-title activator">
         <div class="container" style="width: 100%;height: 60px;">
-          <h3 class="robot"><%= human.scum_name %></h3>
+          <h3 class="robot"><%= auction.human.scum_name %></h3>
         </div>
         <div class="row">
           <i class="material-icons right" style="margin:auto;padding-right:93px;padding-top:2px;">subject</i></span>
@@ -17,12 +17,12 @@
         <h5 style="padding-left:81px;">Details</h5>
       </div>
       <button class="btn waves-effect waves-light red" type="submit" name="action">
-        <%= link_to "Terminate Human", "#", style: "color: white"  %>
+        <%= link_to "Decomission #{auction.human.scum_name}!", decomission_human_path(auction.human), method: :patch, style: "color: white"  %>
       </button>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Back to Human</span>
-      <p class="custom-para"> <%= human.bio %> </p>
+      <p class="custom-para"> <%= auction.human.bio %> </p>
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'base#show'
   post '/declare_winner', to: 'auctions#declare_winner'
   get '/live_auctions', to: 'users#live_auctions'
+  patch '/decomission_human', to: 'humans#decomission_human'
 
   resources :humans, only: [:index, :show]
 
