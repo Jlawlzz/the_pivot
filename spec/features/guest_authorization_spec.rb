@@ -7,6 +7,7 @@ RSpec.feature "guest authorizations" do
     user = create(:user)
 
     visit dashboard_path
+    # save_and_open_page
     expect(page).to have_content("You do not have that level of access")
     expect(current_path).to be(root_path)
 
