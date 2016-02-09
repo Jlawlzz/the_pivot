@@ -5,7 +5,9 @@
         <h1 class="brand-logo robot center"><a href="/dashboard">Hire a Human</a></h1>
       </div>
       <ul class="right hide-on-med-and-down">
-        <li class = "hoverable"><%= link_to "Current Bids: #{cart.count_of}", "#"%></li>
+        <% if current_user %>
+        <li class = "hoverable"><%= link_to "Live Auctions", live_auctions_path %></li>
+        <% end %>
         <li class = "hoverable"><%= render partial: "partials/dropdown"%></li>
       </ul>
       <ul class="left hide-on-med-and-down">

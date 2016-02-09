@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/doomsday', to: 'sessions#doomsday'
   get '/dashboard', to: 'base#show'
+  post '/declare_winner', to: 'auctions#declare_winner'
+  get '/live_auctions', to: 'users#live_auctions'
 
   resources :humans, only: [:index, :show]
 
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :update]
+
   resources :businesses, only: [:new, :create, :index]
   resources :businesses, only: [:show], path: ':business', as: :business
 end
