@@ -26,7 +26,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
   def update
+    @user.update(set_user)
+    flash[:notice] = "Your detaills have been updated"
+    redirect_to dashboard_path
+  end
+
+  def assign_business
     @user = current_user
     @business = Business.find(params[:format])
     session[:business_id] = @business.id
@@ -35,7 +45,6 @@ class UsersController < ApplicationController
   end
 
   def live_auctions
-
     live_auctions = current_user.auctions.where(status: 'live')
     @live_auctions = live_auctions.map do |auction|
       {auction: auction, user_bid: auction.bids.where(user_id: @user.id).last.amount}
@@ -44,14 +53,14 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
-    params.require(:user).permit(
-      :first_name,
-      :last_name,
-      :username,
-      :password,
-      :password_confirmation,
-    )
-  end
+    def set_user
+      params.require(:user).permit(
+        :first_name,
+        :last_name,
+        :username,
+        :password,
+        :password_confirmation,
+      )
+    end
 
 end

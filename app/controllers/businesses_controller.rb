@@ -17,6 +17,7 @@ class BusinessesController < ApplicationController
 
   def show
     business_not_found
+    # binding.pry
     @business = Business.find(params[:id])
   end
 
