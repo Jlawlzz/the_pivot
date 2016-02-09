@@ -32,5 +32,6 @@ RSpec.feature "user sees their auctions" do
     3.times do |i|
       expect(page).to have_content(humans[i+1].scum_name)
     end
+    expect(page).to_not have_content(humans[0].scum_name)
   end
 end
