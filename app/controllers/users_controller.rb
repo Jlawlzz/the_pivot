@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       @user = User.find(session[:user_id])
       @reviews = @user.reviews
       @business = Business.new
+      @humans = @user.humans
     else
       flash[:error] = {message: "Must be signed in to see dashboard.", color: "red"}
       redirect_to '/'

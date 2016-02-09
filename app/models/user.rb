@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   has_many :business_users
   has_many :businesses, through: :business_users
 
+  has_many :auctions
+  has_many :humans, through: :auctions
+
   validates :username, presence: true, uniqueness: true
 
   enum role: %w(default admin)
