@@ -21,5 +21,8 @@ RSpec.feature "admin user can fire employees" do
     expect(page).to have_content("#{Human.last.name}")
 
     click_on "#{human.first.name}"
+
+    expect(page).to not_have_content("Bid Now")
+    expect(page).to have_content()
   end
 end
