@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @business = Business.find(params[:format])
+    session[:business_id] = @business.id
     BusinessUser.create(business_id: @business.id, user_id: current_user.id)
     redirect_to admin_business_path(@business.url, @business.id)
   end
