@@ -10,6 +10,16 @@
       </div>
     </div>
 
+    <div class="col s12"  style="padding-top:5vh;">
+      <div class="card z-depth-5" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
+        <div class="card-content center">
+          <h5 class="robot"> Recently won humans: </h5>
+          <br>
+          <%= render partial: "auction_grid", collection: current_user.auctions, as: :auction %>
+        </div>
+      </div>
+    </div>
+
     <div class="card" style="border-style:solid;border-color:#ff4444;border-width:thin;">
       <div class="grid-item-container">
           <div style="padding-top:15px;">
@@ -34,8 +44,8 @@
     <div class="grid-item-container">
       <h2 class="center">Current Employees</h2>
       <div class="row">
-        <% if @humans %>
-          <%= render partial: "partials/grid_item", collection: @humans, as: :human %>
+        <% if @business.humans %>
+          <%= render partial: "partials/grid_item", collection: @business.humans, as: :human %>
         <% else %>
           <h2> You have no Employees, visit Human Shop to bid </h2>
         <% end %>

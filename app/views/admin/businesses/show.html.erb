@@ -1,15 +1,10 @@
 
-<% @admins = []%>
-<% 3.times do |t| %>
-  <% @admins << "Admin#{t}" %>
-<% end %>
-
 <div class = "container">
   <div class="col s12"  style="padding-top:10vh;">
     <div class="card">
       <div class="card-content center">
         <h2> <%= @business.name %> </h2>
-        <h4>We make humans do the jobs you don't want to.</h4>
+        <h4> <%= @business.description %></h4>
       </div>
     </div>
   </div>
@@ -18,7 +13,7 @@
   <div class="grid-item-container">
     <h2 class="center">Current Admins</h2>
     <div class="row">
-        <%= render partial: "admin_grid", collection: @admins, as: :admin %>
+        <%= render partial: "admin_grid", collection: @business.users, as: :admin %>
     </div>
   </div>
 </div>
@@ -27,7 +22,7 @@
   <div class="grid-item-container">
     <h2 class="center">Current Employees</h2>
     <div class="row">
-        <%= render partial: "employee_grid", collection: @business.humans, as: :human %>
+        <%= render partial: "employee_grid", collection: @auctions, as: :auction %>
     </div>
   </div>
 </div>

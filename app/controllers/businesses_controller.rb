@@ -19,6 +19,8 @@ class BusinessesController < ApplicationController
     business_not_found
     # binding.pry
     @business = Business.find(params[:id])
+    @auctions = @business.auctions.where.not(status: "fired")
+    session[:business_id] = @business.id
   end
 
   private
