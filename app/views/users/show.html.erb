@@ -1,20 +1,21 @@
 
 <div class="container center">
-    <div class="col s12"  style="padding-top:5vh;">
+  <div class= "row">
+    <div class="col s6"  style="padding-top:5vh;">
       <div class="card z-depth-5" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
         <div class="card-content center">
           <h5 class="robot"> <%= current_user.first_name %>'s Profile</h5>
           <br>
           <h8 class="robot"> Username: <%= current_user.username %> </h8>
         </div>
-        <div id="user<%="#{current_user.id}"%>">
-          <%= link_to "Bid As Yourself", {:controller => "auctions", :action => "index" }, style: "border-style:solid;border-color:#ff4444;width:225px;display:inline-block;border-width:thin;"%>
+        <div id="user">
+          <%= link_to "Bid", {:controller => "auctions", :action => "index" }, style: "border-style:solid;border-color:#ff4444;width:225px;display:inline-block;border-width:thin;"%>
         </div>
         <br>
       </div>
   </div>
 
-    <div class="col s12"  style="padding-top:5vh;">
+    <div class="col s6"  style="padding-top:5vh;">
       <div class="card z-depth-5" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
         <div class="card-content center">
           <h5 class="robot"> Recently won humans: </h5>
@@ -23,6 +24,7 @@
         </div>
       </div>
     </div>
+  </div>
 
     <div class="card" style="border-style:solid;border-color:#ff4444;border-width:thin;">
       <div class="grid-item-container">

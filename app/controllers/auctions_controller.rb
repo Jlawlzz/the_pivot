@@ -11,8 +11,13 @@ class AuctionsController < ApplicationController
   end
 
   def declare_winner
+    # WinnerPresenter(args) -> ____.winning_bid
+
     @auction = Auction.find(params[:format])
     @business = Business.find(current_business)
+
+
+    # method --> operation
     @business.auctions << @auction
     @auction.update_attribute(:status, "closed")
     redirect_to business_path(@business.url, @business.id)

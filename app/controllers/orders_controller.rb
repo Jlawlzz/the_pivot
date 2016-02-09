@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    # presenter 
     @order = Order.find(params[:id]) if current_user.admin?
     @order = current_user.orders.find(params[:id]) if !current_user.admin?
     @items = @order.order_items

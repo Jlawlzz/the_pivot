@@ -10,8 +10,8 @@ RSpec.feature "registered user has option to bid as user" do
 
     visit dashboard_path
 
-    within "#user#{user1.id}" do
-      expect(page).to have_content("Bid As Yourself")
+    within "#user" do
+      expect(page).to have_content("Bid")
     end
 
   end

@@ -17,6 +17,8 @@ class UsersController < ApplicationController
 
   def show
     if session[:user_id]
+      # show
+      # UserPresenter(user)
       @user = User.find(session[:user_id])
       @reviews = @user.reviews
       @business = Business.new
