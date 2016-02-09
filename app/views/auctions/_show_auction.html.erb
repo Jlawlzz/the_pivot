@@ -2,10 +2,9 @@
   <div class="card z-depth-5">
     <div class="row">
       <div class="col m4">
-        <div style="width:300px;height:240px;overflow:hidden;">
-          <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/a/a1/Harry_Fain,_coal_loader._Inland_Steel_Company,_Wheelwright_%5E1_%26_2_Mines,_Wheelwright,_Floyd_County,_Kentucky._-_NARA_-_541452.jpg", width: "300px",  id: "#{auction.id}_auction", class: "item-show" %>
+        <div style="human-image">
+          <%= image_tag "#{auction.human.url}", width: "300px",  id: "#{auction.id}_auction", class: "item-show" %>
         </div>
-
         <div class="row card-button">
           <div id="bid">
             <h5>Current Bid: $<%= auction.high_bid %> </h5>
