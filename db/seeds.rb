@@ -70,7 +70,6 @@ class Seed
   def generate_auctions
     auction = 10.times do |i|
       auction = Auction.create!(
-        winning_bid: Faker::Number.number(5),
         human_id: random_human.id
       )
       puts "Auction #{i}: Human: #{auction.human.scum_name} created!"
