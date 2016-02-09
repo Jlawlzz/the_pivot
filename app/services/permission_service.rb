@@ -13,7 +13,6 @@ class PermissionService
   def allow?(controller, action)
     @controller = controller
     @action = action
-
     case
     when skynet?
       skynet_permissions
@@ -31,6 +30,7 @@ class PermissionService
     end
 
     def guest_user_permissions
+      return true if controller == "home"
       return true if controller == "sessions" && action.in?(%w(new))
       return true if controller == "auctions" && action.in?(%w(index))
       return true if controller == "users" && action.in?(%w(new))

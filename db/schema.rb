@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20160209040212) do
     t.string   "status",      default: "live"
     t.integer  "human_id"
     t.integer  "business_id"
+    t.integer  "user_id"
   end
 
   add_index "auctions", ["business_id"], name: "index_auctions_on_business_id", using: :btree
   add_index "auctions", ["human_id"], name: "index_auctions_on_human_id", using: :btree
+  add_index "auctions", ["user_id"], name: "index_auctions_on_user_id", using: :btree
 
   create_table "bids", force: :cascade do |t|
     t.integer  "amount"
@@ -60,9 +62,9 @@ ActiveRecord::Schema.define(version: 20160209040212) do
   create_table "humans", force: :cascade do |t|
     t.string   "scum_name"
     t.string   "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "url"
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+    t.string   "url",        default: "https://www.ssa.gov/history/pics/woman50.gif"
   end
 
   create_table "items", force: :cascade do |t|
@@ -151,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160209040212) do
 
   add_foreign_key "auctions", "businesses"
   add_foreign_key "auctions", "humans"
+  add_foreign_key "auctions", "users"
   add_foreign_key "bids", "auctions"
   add_foreign_key "bids", "businesses"
   add_foreign_key "bids", "users"
