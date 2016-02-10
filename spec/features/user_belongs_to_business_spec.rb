@@ -3,13 +3,20 @@ require 'rails_helper'
 RSpec.feature "user can create account from home" do
   scenario "registered has current business updated if they go from one to another" do
 
+    roles = create_roles
+
     user = User.create(first_name:"charissa", last_name:"lawrence", username:"claw", password:"password", password_confirmation:"password")
     business1 = Business.create(name:"Robot World")
     business2 = Business.create(name:"Machine USA")
-    login(user)
+
+    UserRole.create(user_id: user.id, role_id: roles[0].id)
+    UserRole.create(business_id: business1.id, user_id: user.id, role_id: roles[1].id)
+    UserRole.create(business_id: business2.id, user_id: user.id, role_id: roles[1].id)
 
     user.businesses << business1
     user.businesses << business2
+
+    login(user)
 
     visit dashboard_path
 
