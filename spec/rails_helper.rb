@@ -17,8 +17,10 @@ def login(user)
   click_button "Sign In"
 end
 
-def create_registered_user_role(user)
-  UserRole.create(user_id: user.id, role_id: "registered_user")
+def create_roles
+  [Role.create(name: "registered_user"),
+  Role.create(name: "business_admin"),
+  Role.create(name: "skynet")]
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }

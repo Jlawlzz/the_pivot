@@ -40,7 +40,7 @@ class PermissionService
     end
 
     def business_admin_permissions
-      binding.pry
+      # binding.pry
       return true if controller == "home" && action.in?(%w(index))
       return true if controller == "sessions" && action.in?(%w(new create destroy))
       return true if controller == "users" && action.in?(%w(show new edit live_auctions))

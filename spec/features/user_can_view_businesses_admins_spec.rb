@@ -8,10 +8,9 @@ RSpec.feature "user can view businesses" do
     b1 = Business.create(name:"Porta Potty", description:"We clean up after nasty humans")
     b2 = Business.create(name:"Robot Shoe Makers", description:"Because metal feet no good for floor")
     b1.humans << human1
-    # create_registered_user_role(user1)
-    # binding.pry
-    role = Role.create(name: "registered_user")
-    UserRole.create(user_id: user1.id, role_id: role.id)
+
+    roles = create_roles
+    UserRole.create(user_id: user1.id, role_id: roles[0].id)
     login(user1)
 
     # binding.pry

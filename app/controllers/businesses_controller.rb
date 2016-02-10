@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_action :business_not_found
+  before_action :business_not_found, only: [:show]
 
   def index
     @businesses = Business.all

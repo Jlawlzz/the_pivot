@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     session[:business_id] = @business.id
     BusinessUser.create(business_id: @business.id, user_id: current_user.id)
     role = Role.find_by(name: "business_admin")
-    current_user.user_roles.update_attributes(business_id: @business.id, role_id: role.id)
+    current_user.user_roles << UserRole.create(business_id: @business.id, role_id: role.id)
     redirect_to admin_business_path(@business.url, @business.id)
   end
 
