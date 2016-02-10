@@ -7,13 +7,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/doomsday', to: 'sessions#doomsday'
-  get '/dashboard', to: 'base#show'
   post '/declare_winner', to: 'auctions#declare_winner'
   get '/live_auctions', to: 'users#live_auctions'
   patch '/decomission_human', to: 'humans#decomission_human'
   patch '/assign_business', to: 'users#assign_business'
-
-  resources :humans, only: [:index, :show]
 
   resources :auctions, only: [:index, :show]
 

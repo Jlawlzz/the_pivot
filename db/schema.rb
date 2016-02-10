@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160209040212) do
     t.integer  "business_id"
     t.integer  "user_id"
     t.integer  "winning_bid_id"
+
   end
 
   add_index "auctions", ["business_id"], name: "index_auctions_on_business_id", using: :btree
