@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user sees their auctions" do
   scenario "user visits dashboard path and sees past three auctions" do
-
+    roles = create_roles
     humans = create_list(:human, 4)
 
     business = create(:business)
@@ -12,6 +12,10 @@ RSpec.feature "user sees their auctions" do
                         username: "admin",
                         password: "password",
                         role: 1)
+    UserRole.create(business_id: business.id, user_id: admin.id, role_id: roles[1].id)
+    UserRole.create(user_id: admin.id, role_id: roles[0].id)
+
+    business.users << admin
 
     bids = []
     auctions = []

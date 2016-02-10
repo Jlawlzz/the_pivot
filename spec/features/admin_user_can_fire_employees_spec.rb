@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.feature "admin user can fire employees" do
   scenario "admin can fire a human and human appears back on the auction page" do
-
+    roles = create_roles
     business = create(:business)
 
     3.times do |t|
-      business.humans << create(:human)
+      business.auctions << Auction.create(human_id: create(:human).id)
     end
 
     admin = User.create(first_name: "Admin",
@@ -14,6 +14,9 @@ RSpec.feature "admin user can fire employees" do
                         username: "admin",
                         password: "password",
                         role: 1)
+
+    UserRole.create(business_id: business.id, user_id: admin.id, role_id: roles[1].id)
+    UserRole.create(user_id: admin.id, role_id: roles[0].id)
 
     business.users << admin
     login(admin)

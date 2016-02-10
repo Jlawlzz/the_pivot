@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "admin can bid and acquire human" do
   scenario "admin can bid on a human" do
+    roles = create_roles
     human = create(:human)
     auction = Auction.create(human_id: human.id)
     business = create(:business)
@@ -13,6 +14,8 @@ RSpec.feature "admin can bid and acquire human" do
                         role: 1)
 
     business.users << admin
+    UserRole.create(business_id: business.id, user_id: admin.id, role_id: roles[1].id)
+    UserRole.create(user_id: admin.id, role_id: roles[0].id)
 
     login(admin)
 
@@ -48,6 +51,7 @@ RSpec.feature "admin can bid and acquire human" do
   end
 
   scenario "business wins bid and admin see human on business dashobaord" do
+    roles = create_roles
     human = create(:human)
     auction = Auction.create(human_id: human.id)
     business = create(:business)
@@ -59,16 +63,17 @@ RSpec.feature "admin can bid and acquire human" do
                         role: 1)
 
     business.users << admin
+    UserRole.create(business_id: business.id, user_id: admin.id, role_id: roles[1].id)
+    UserRole.create(user_id: admin.id, role_id: roles[0].id)
 
     login(admin)
 
-    visit dashboard_path
-    click_link "Bid Now"
-    click_link "Bid Now!"
+    visit auction_path(auction)
+    ApplicationController.any_instance.stub(:current_business).and_return(business)
 
     within("#bid") do
       fill_in "Amount", with: "1000"
-      click_on "Bid Now"
+      click_on "Bid Now!"
     end
 
     click_on "End Auction"
