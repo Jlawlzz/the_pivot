@@ -13,7 +13,7 @@ class AuctionsController < ApplicationController
   def declare_winner
     # WinnerPresenter(args) -> ____.winning_bid
     @auction = Auction.find(params[:format])
-    @business = Business.find(current_business)
+    @business = Business.find(current_business.id)
     @auction.assign_winner_of(@auction)
     redirect_to business_path(@business.url, @business.id)
   end
