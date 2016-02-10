@@ -18,10 +18,14 @@
       </div>
       <div id="bid">
       <h5>Current Bid: $<%= auction.high_bid %> </h5>
-      <h5>Time Remaining 1:07</h5>
+      <h5><div id="countdown"></div>
+        <%= javascript_tag "auctionTimer()" %>
+      <div id="countdown2"></div></h5>
+      <div id="bid_button">
       <button class="btn waves-effect waves-light red" type="submit" name="action">
         <%= link_to "Bid Now!", auction_path(auction), style: "color: white"  %>
       </button>
+    </div>
     </div>
     </div>
     <div class="card-reveal">
