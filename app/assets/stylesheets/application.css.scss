@@ -14,6 +14,95 @@
  *= require_self
  */
 
+ .business-card {
+   border-style:
+   solid;
+   border-color:#ff4444;
+   border-width:thin;
+ }
+
+ .human-card {
+   border-style:solid;
+   border-color:#ff4444;
+   display:inline-block;
+   border-width:thin;
+ }
+
+ .user-card {
+   border-style:solid;
+   border-color:#ff4444;
+   display:inline-block;
+   border-width:thin;
+ }
+
+ .user-edit {
+   padding-top:20px;
+   padding-left:55px;
+   padding-bottom:20px;
+   padding-right:55px;
+ }
+
+ .sign-in {
+   padding-top:20px;
+   padding-left:55px;
+   padding-bottom:20px;
+   padding-right:55px;
+ }
+
+ .new-biz {
+   padding-top:20px;
+   padding-left:55px;
+   padding-bottom:20px;
+   padding-right:55px;
+ }
+
+ .styled-button {
+   border-style:solid;
+   border-color:#ff4444;
+   width:225px;
+   display:inline-block;
+   border-width:thin;
+ }
+
+ .business-image {
+   height:200px;
+   width:200px;
+   -webkit-filter:invert(100%);
+   filter:invert(100%);
+ }
+
+ .human-contain {
+   width:100%;
+   height:60px;
+ }
+
+ .admin-contain{
+   width:100%;
+   height:60px;
+ }
+
+ .admin-image {
+   width:300px;
+   height:240px;
+   overflow:hidden;
+ }
+
+ .human-details {
+   padding-left:81px;
+ }
+
+.human-icons {
+  margin:auto;
+  padding-right:93px;
+  padding-top:2px;
+}
+
+ .human-images {
+   width:300px;
+   height:200px;
+   overflow:hidden;
+ }
+
 .card {
   border-style:solid;
   border-color:#ff4444;
@@ -205,6 +294,12 @@ h1 {
   font-family:Monaco;
   font-size: 35px;
   color:#ffffff;
+}
+
+.column-head {
+  font-family: Monaco;
+  color: #ffffff;
+  font-size: 18px;
 }
 
 #transparent-button {

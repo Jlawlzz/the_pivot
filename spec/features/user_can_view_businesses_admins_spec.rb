@@ -5,11 +5,16 @@ RSpec.feature "user can view businesses" do
 
     user1 = create(:user)
     human1 = Human.create(scum_name: "ID1212")
-    b1 = Business.create(name:"Porta Potty", description:"We clean up after nasty humans", url:"www.google.com")
-    b2 = Business.create(name:"Robot Shoe Makers", description:"Because metal feet no good for floor", url:"www.google.com")
+    b1 = Business.create(name:"Porta Potty", description:"We clean up after nasty humans")
+    b2 = Business.create(name:"Robot Shoe Makers", description:"Because metal feet no good for floor")
     b1.humans << human1
+    # create_registered_user_role(user1)
+    # binding.pry
+    role = Role.create(name: "registered_user")
+    UserRole.create(user_id: user1.id, role_id: role.id)
     login(user1)
 
+    # binding.pry
     visit '/'
 
     expect(page).to have_content("View Humans for Hire")

@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     unless authorized?
-      redirect_to '/' , danger: "You do not have that level of access"
+      redirect_to root_path, danger: "You do not have that level of access"
     end
   end
 end

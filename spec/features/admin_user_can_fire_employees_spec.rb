@@ -3,7 +3,12 @@ require 'rails_helper'
 RSpec.feature "admin user can fire employees" do
   scenario "admin can fire a human and human appears back on the auction page" do
 
-    business = create(:business_with_humans)
+    business = create(:business)
+
+    3.times do |t|
+      business.humans << create(:human)
+    end
+
     admin = User.create(first_name: "Admin",
                         last_name: "guy",
                         username: "admin",
@@ -28,6 +33,6 @@ RSpec.feature "admin user can fire employees" do
 
     visit auctions_path
     expect(page).to have_content("#{humans[0].scum_name}")
-    expect(page).to have_content("Current Bid: $ 0")
+    expect(page).to have_content("Current Bid: $0")
   end
 end

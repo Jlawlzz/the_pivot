@@ -20,7 +20,9 @@ RSpec.feature "user sees their auctions" do
     end
 
     4.times do |t|
-      bids << Bid.create(amount:50, user_id: admin.id, auction_id: auctions[t].id)
+      bid = Bid.create(amount:50, user_id: admin.id, auction_id: auctions[t].id)
+      bids << bid
+      auctions[t].winning_bid.update_attribute(:bid_id, bid.id)
     end
 
     business.users << admin

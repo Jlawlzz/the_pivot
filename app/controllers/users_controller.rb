@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(set_user)
     if @user.save
       session[:user_id] = @user.id
+      UserRoles.create(user_id: @user.id, role_id: "registered_user")
       redirect_to dashboard_path
     else
       flash[:error] = {message: @user.errors.full_messages.join(", "), color: "red"}
@@ -20,6 +21,8 @@ class UsersController < ApplicationController
       @user = User.find(session[:user_id])
       @reviews = @user.reviews
       @business = Business.new
+      @humans = @user.humans
+      @auctions = @user.auctions_won
     else
       flash[:error] = {message: "Must be signed in to see dashboard.", color: "red"}
       redirect_to '/'
@@ -41,6 +44,8 @@ class UsersController < ApplicationController
     @business = Business.find(params[:format])
     session[:business_id] = @business.id
     BusinessUser.create(business_id: @business.id, user_id: current_user.id)
+    role = Role.find_by(name: "business_admin")
+    current_user.user_roles.update_attributes(business_id: @business.id, role_id: role.id)
     redirect_to admin_business_path(@business.url, @business.id)
   end
 

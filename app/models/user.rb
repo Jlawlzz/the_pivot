@@ -5,12 +5,16 @@ class User < ActiveRecord::Base
 
   has_many :bids
   has_many :auctions, through: :bids
+  has_many :winning_bids, through: :bids
+
 
   has_many :business_users
   has_many :businesses, through: :business_users
 
   has_many :user_roles
   has_many :roles, through: :user_roles
+  has_many :auctions
+  has_many :humans, through: :auctions
 
   validates :username, presence: true, uniqueness: true
 
@@ -36,6 +40,13 @@ class User < ActiveRecord::Base
     live_auctions = auctions.where(status: 'live')
     live_auctions.map do |auction|
       {auction: auction, user_bid: auction.bids.where(user_id: self.id).last.amount}
+    end
+  end
+
+
+  def auctions_won
+    auctions = Auction.all.select do |auction|
+      (auction.winning_bid.bid.user_id == self.id)
     end
   end
 end

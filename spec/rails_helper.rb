@@ -11,10 +11,14 @@ require 'simplecov'
 SimpleCov.start("rails")
 
 def login(user)
- visit login_path
- fill_in "Username:", with: user.username
- fill_in "Password", with: 'password'
+  visit login_path
+  fill_in "Username:", with: user.username
+  fill_in "Password", with: 'password'
   click_button "Sign In"
+end
+
+def create_registered_user_role(user)
+  UserRole.create(user_id: user.id, role_id: "registered_user")
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }

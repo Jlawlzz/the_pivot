@@ -4,11 +4,6 @@ FactoryGirl.define do
     name
     description
     url
-
-    factory :business_with_humans do
-      humans { create_list(:human, 2) }
-    end
-
   end
 
   sequence :name do |n|

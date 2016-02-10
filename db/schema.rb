@@ -17,18 +17,21 @@ ActiveRecord::Schema.define(version: 20160209040212) do
   enable_extension "plpgsql"
 
   create_table "auctions", force: :cascade do |t|
-    t.integer  "winning_bid", default: 0
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "status",      default: "live"
+    t.integer  "winning_bid",    default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "status",         default: "live"
     t.integer  "human_id"
     t.integer  "business_id"
     t.integer  "user_id"
+    t.integer  "winning_bid_id"
+
   end
 
   add_index "auctions", ["business_id"], name: "index_auctions_on_business_id", using: :btree
   add_index "auctions", ["human_id"], name: "index_auctions_on_human_id", using: :btree
   add_index "auctions", ["user_id"], name: "index_auctions_on_user_id", using: :btree
+  add_index "auctions", ["winning_bid_id"], name: "index_auctions_on_winning_bid_id", using: :btree
 
   create_table "bids", force: :cascade do |t|
     t.integer  "amount"
@@ -151,9 +154,18 @@ ActiveRecord::Schema.define(version: 20160209040212) do
     t.integer  "role",            default: 0
   end
 
+  create_table "winning_bids", force: :cascade do |t|
+    t.integer  "bid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "winning_bids", ["bid_id"], name: "index_winning_bids_on_bid_id", using: :btree
+
   add_foreign_key "auctions", "businesses"
   add_foreign_key "auctions", "humans"
   add_foreign_key "auctions", "users"
+  add_foreign_key "auctions", "winning_bids"
   add_foreign_key "bids", "auctions"
   add_foreign_key "bids", "businesses"
   add_foreign_key "bids", "users"
@@ -168,4 +180,5 @@ ActiveRecord::Schema.define(version: 20160209040212) do
   add_foreign_key "user_roles", "businesses"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
+  add_foreign_key "winning_bids", "bids"
 end

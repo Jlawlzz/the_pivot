@@ -40,8 +40,8 @@ RSpec.feature "admin can bid and acquire human" do
       click_on "Bid Now"
     end
 
-    expect(Bid.all.count).to eq 1
-    expect(Bid.first.amount).to eq 1000
+    expect(Bid.all.count).to eq 2
+    expect(Bid.last.amount).to eq 1000
     expect(page).to have_content "You have succesfully placed a bid of 1000!"
     expect(current_path).to eq auction_path(auction)
     expect(page).to have_content("Current Bid: $1000")
@@ -72,7 +72,7 @@ RSpec.feature "admin can bid and acquire human" do
     end
 
     click_on "End Auction"
-    
+
     visit business_path(business.url, business.id)
     expect(page).to have_content(human.scum_name)
 
