@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user can create account from home" do
   scenario "Unregistered user creates account and creates business" do
-
+    roles = create_roles
     humans = create_list(:human, 30)
 
     visit '/'
@@ -22,7 +22,6 @@ RSpec.feature "user can create account from home" do
     within "form#new_user" do
       click_button "Submit"
     end
-
     user = User.find_by(username: 'jlawlz')
 
     expect(current_path).to eq dashboard_path
@@ -33,9 +32,7 @@ RSpec.feature "user can create account from home" do
     expect(page).to have_content "Create a Business"
     expect(page).to have_content "Join an Existing Business"
 
-    # within "form#new_user" do
-      click_link "Create a Business"
-    # end
+    click_link "Create a Business"
     expect(current_path).to eq new_business_path
 
     fill_in "Business Name:", with: "Hastalavista"
@@ -47,6 +44,7 @@ RSpec.feature "user can create account from home" do
     expect(page).to have_content "Hastalavista"
 
     visit dashboard_path
+    expect(current_path).to eq dashboard_path
     expect(page).to have_content "Hastalavista"
   end
 

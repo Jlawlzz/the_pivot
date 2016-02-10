@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(set_user)
     if @user.save
       session[:user_id] = @user.id
-      UserRoles.create(user_id: @user.id, role_id: "registered_user")
+      UserRole.create(user_id: @user.id)
       redirect_to dashboard_path
     else
       flash[:error] = {message: @user.errors.full_messages.join(", "), color: "red"}

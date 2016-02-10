@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "user can login account from home" do
   scenario "I see my dashboard" do
+    roles = create_roles
     user = create(:user)
-
+    UserRole.create(user_id: user.id, role_id: roles[0].id)
     visit '/'
 
     click_link "Login"
@@ -21,7 +22,7 @@ RSpec.feature "user can login account from home" do
     expect(page).to_not have_content "Login"
     expect(page).to have_content "Logout"
   end
-  
+
   scenario "I get redirected if my credentials are not correct" do
     user = create(:user)
     dummy_incorrect_value = "wrong"

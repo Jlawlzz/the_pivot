@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   has_many :auctions, through: :bids
   has_many :winning_bids, through: :bids
 
-
   has_many :business_users
   has_many :businesses, through: :business_users
 

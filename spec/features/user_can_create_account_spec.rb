@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "user can create account from home" do
   scenario "I see my dashboard" do
+    roles = create_roles
+
     visit '/'
 
     expect(page).to have_content("Login")
@@ -15,6 +17,7 @@ RSpec.feature "user can create account from home" do
     click_on "Submit"
 
     user = User.find_by(username: 'jlawlz')
+    UserRole.create(user_id: user.id, role_id: roles[0].id)
 
     expect(current_path).to eq dashboard_path
 

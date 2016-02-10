@@ -15,7 +15,8 @@ class BusinessesController < ApplicationController
     if @business.save
       current_user.businesses << @business
       session[:business_id] = @business.id
-      current_user.user_roles.update_attributes(business_id: @business.id, role_id: "business_admin")
+      role = Role.find_by(name: "business_admin")
+      current_user.user_roles << UserRole.create(business_id: @business.id, role_id: role.id)
       redirect_to admin_business_path(@business.url, @business.id)
     else
       flash[:error] = {message: @user.errors.full_messages.join(", "), color: "red"}

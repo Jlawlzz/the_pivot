@@ -35,12 +35,11 @@ class PermissionService
       return true if controller == "home" && action.in?(%w(index))
       return true if controller == "sessions" && action.in?(%w(new create))
       return true if controller == "auctions" && action.in?(%w(index))
-      return true if controller == "users" && action.in?(%w(new))
+      return true if controller == "users" && action.in?(%w(new create))
       return true if controller == "businesses" && action.in?(%w(index))
     end
 
     def business_admin_permissions
-      # binding.pry
       return true if controller == "home" && action.in?(%w(index))
       return true if controller == "sessions" && action.in?(%w(new create destroy))
       return true if controller == "users" && action.in?(%w(show new edit live_auctions))
@@ -55,7 +54,8 @@ class PermissionService
       return true if controller == "sessions" && action.in?(%w(new create destroy))
       return true if controller == "users" && action.in?(%w(show live_auctions assign_business new edit))
       return true if controller == "auctions" && action.in?(%w(index show))
-      return true if controller == "businesses" && action.in?(%w(new index))
+      return true if controller == "businesses" && action.in?(%w(new index create))
+      return true if controller == "admin/businesses" && action.in?(%w(show))
     end
 end
 
