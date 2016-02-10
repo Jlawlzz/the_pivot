@@ -58,39 +58,3 @@ class PermissionService
       return true if controller == "businesses" && action.in?(%w(new create index))
     end
 end
-
-#
-# case
-# when platform_admin?
-#   platform_admin_permissions
-# when store_admin? && user.store_id ==
-#   store_admin_permissions
-# else
-#   guest_user_permissions
-# end
-# end
-#
-# def platform_admin_permissions
-# return true
-# end
-#
-# def guest_user_permissions
-# return true if controller == "sessions"
-# return true if controller == "items" && action.in?(%w(index show))
-# return true if controller == "stores" && action.in?(%w(index show))
-# end
-#
-# def store_admin_permissions
-# return true if controller == "sessions"
-# return true if controller == "items" && action.in?(%w(index show))
-# return true if controller == "stores" && action.in?(%w(index show))
-# return true if controller == "orders" && action.in(%w(index show))
-# end
-#
-# def registered_user_permissions
-# return true if controller == "sessions"
-# return true if controller == "items" && action.in?(%w(index show))
-# return true if controller == "stores" && action.in?(%w(index show))
-# return true if controller == "orders" && action.in(%w(index show))
-# end
-# end
