@@ -6,15 +6,47 @@
           <%= image_tag "#{auction.human.url}", width: "300px",  id: "#{auction.id}_auction", class: "item-show" %>
         </div>
         <div class="row card-button">
-          <div id="bid">
+          <div style="padding-left:30px" id="bid">
             <h5>Current Bid: $<%= auction.high_bid %> </h5>
-            <h5>Time Remaining 1:07</h5>
+            <h5><div id="countdown"></div>
+            <script>
+                window.onload = function() {
+                  function countdown( elementName, minutes, seconds )
+                  {
+                  var element, endTime, hours, mins, msLeft, time;
+                  function twoDigits( n )
+                  {
+                      return (n <= 9 ? "0" + n : n);
+                  }
+                  function updateTimer()
+                  {
+                      msLeft = endTime - (+new Date);
+                      if ( msLeft < 1000 ) {
+                        $('#bid_button').html('');
+                      } else {
+                          time = new Date( msLeft );
+                          hours = time.getUTCHours();
+                          mins = time.getUTCMinutes();
+                          element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+                          setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+                      }
+                  }
+                  element = document.getElementById( elementName );
+                  endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+                  updateTimer();
+                  }
+                  countdown( "countdown", 0, <%= auction.time_left %>);
+                }
+            </script>
+            <div id="countdown2"></div></h5>
+            <div id="bid_button">
             <%= simple_form_for :bid, url: bids_path(auction.id) do |f| %>
             <%= f.input :amount, as: :integer %>
             <button class="btn waves-effect waves-light red" type="submit" name="action">
               <%= f.submit "Bid Now" %>
             </button>
             <% end %>
+          </div>
 
           </div>
         </div>

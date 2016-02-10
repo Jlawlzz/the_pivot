@@ -16,7 +16,6 @@ class AuctionsController < ApplicationController
     @auction = Auction.find(params[:format])
     @business = Business.find(current_business)
 
-
     # method --> operation
     @business.auctions << @auction
     @auction.update_attribute(:status, "closed")

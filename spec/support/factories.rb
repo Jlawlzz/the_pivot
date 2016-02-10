@@ -31,9 +31,6 @@ FactoryGirl.define do
     "#{n}_bio"
   end
 
-  factory :auction do
-  end
-
   factory :user do
     first_name
     last_name
