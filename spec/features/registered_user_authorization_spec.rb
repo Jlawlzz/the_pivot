@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "registered user authorizations" do
   scenario "registered user is redirected to root path and sees flash message when not authorized" do
-    auction = create(:auction)
+    auction = Auction.create
     business = create(:business)
     user = create(:user)
 

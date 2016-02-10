@@ -32,9 +32,6 @@ FactoryGirl.define do
     "#{n}_bio"
   end
 
-  factory :auction do
-  end
-
   factory :user do
     first_name
     last_name
@@ -53,14 +50,5 @@ FactoryGirl.define do
   sequence :username do |n|
     "#{n}FirstLast"
   end
-  #
-  # factory :order do
-  #   status "ordered"
-  #   total_price 5000
-  # end
-  #
-  # factory :order_item do
-  #   item_quantity 1
-  #   item_price 1000
-  # end
+
 end
