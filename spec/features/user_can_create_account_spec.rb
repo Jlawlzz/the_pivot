@@ -4,6 +4,8 @@ RSpec.feature "user can create account from home" do
   scenario "I see my dashboard" do
     roles = create_roles
 
+    create_roles
+
     visit '/'
 
     expect(page).to have_content("Login")

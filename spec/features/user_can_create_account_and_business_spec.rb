@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.feature "user can create account from home" do
   scenario "Unregistered user creates account and creates business" do
     roles = create_roles
+
+    create_roles
+
     humans = create_list(:human, 30)
 
     visit '/'

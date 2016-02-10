@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     unless authorized?
-      redirect_to "/"
+      redirect_to root_path, flash[:notice] = {color: "red", message: "You do not have that level of access"}
     end
   end
 end
