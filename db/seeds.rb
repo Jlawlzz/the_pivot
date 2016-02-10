@@ -7,6 +7,7 @@ class Seed
     seed.generate_humans
     seed.generate_businesses
     seed.generate_auctions
+    seed.generate_roles
   end
 
   def generate_roles

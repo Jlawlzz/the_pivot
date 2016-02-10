@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "user can logout account from navbar" do
   scenario "I see home page" do
+    roles = create_roles
+    user = create(:user)
+    UserRole.create(user_id: user.id, role_id: roles[0].id)
 
     roles = create_roles
 

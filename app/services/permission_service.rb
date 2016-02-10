@@ -55,6 +55,8 @@ class PermissionService
       return true if controller == "sessions" && action.in?(%w(new create destroy))
       return true if controller == "users" && action.in?(%w(show update live_auctions assign_business new edit))
       return true if controller == "auctions" && action.in?(%w(index show))
+      return true if controller == "businesses" && action.in?(%w(new index create))
+      return true if controller == "admin/businesses" && action.in?(%w(show))
       return true if controller == "businesses" && action.in?(%w(new create index))
     end
 end

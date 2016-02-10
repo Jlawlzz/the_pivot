@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       role = Role.find_by(name: "registered_user")
+      # binding.pry
       UserRole.create(user_id: @user.id, role_id: role.id)
       redirect_to dashboard_path
     else
