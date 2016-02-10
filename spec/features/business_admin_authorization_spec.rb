@@ -8,7 +8,7 @@ RSpec.feature "business admin user authorizations" do
 
     visit doomsday_path
     expect(page).to have_content("You do not have that level of access")
-    expect(current_path).to be(root_path)
+    expect(current_path).to eq(root_path)
 
   end
 end

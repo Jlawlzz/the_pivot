@@ -20,8 +20,7 @@ RSpec.feature "registered user can view business page" do
 
     login(admin)
 
-    visit business_path(business.url, business.id)
-
+    visit admin_business_path(business.url, business.id)
     expect(page).to have_content "#{human.scum_name}"
   end
 end

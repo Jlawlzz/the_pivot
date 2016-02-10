@@ -8,23 +8,15 @@ RSpec.feature "registered user authorizations" do
 
     visit doomsday_path
     expect(page).to have_content("You do not have that level of access")
-    expect(current_path).to be(root_path)
-
-    visit users_path
-    expect(page).to have_content("You do not have that level of access")
-    expect(current_path).to be(root_path)
+    expect(current_path).to eq(root_path)
 
     visit edit_user_path(user)
     expect(page).to have_content("You do not have that level of access")
-    expect(current_path).to be(root_path)
+    expect(current_path).to eq(root_path)
 
-    visit declare_winner_path(auction)
+    visit admin_business_path(business.url, business.id)
     expect(page).to have_content("You do not have that level of access")
-    expect(current_path).to be(root_path)
-
-    visit admin_business(business)
-    expect(page).to have_content("You do not have that level of access")
-    expect(current_path).to be(root_path)
+    expect(current_path).to eq(root_path)
 
   end
 end

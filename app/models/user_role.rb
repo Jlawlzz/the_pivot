@@ -4,6 +4,6 @@ class UserRole < ActiveRecord::Base
 
   def initialize(params = nil)
     super
-    self.role_id = Role.find_by(name: "registered_user").id
+    self.role_id = Role.find_by(name: "registered_user").id unless self.role_id
   end
 end

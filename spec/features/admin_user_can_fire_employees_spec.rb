@@ -15,12 +15,12 @@ RSpec.feature "admin user can fire employees" do
                         password: "password",
                         role: 1)
 
-    UserRole.create(business_id: business.id, user_id: admin.id, role_id: roles[1].id)
-    UserRole.create(user_id: admin.id, role_id: roles[0].id)
+
+    admin.user_roles << UserRole.create(business_id: business.id, role_id: roles[1].id)
+    admin.user_roles << UserRole.create(role_id: roles[0].id)
 
     business.users << admin
     login(admin)
-
     humans = [Human.first, Human.last]
 
     visit admin_business_path(business.url, business.id)
