@@ -15,6 +15,10 @@ RSpec.feature "guest authorizations" do
     expect(page).to have_content("You do not have that level of access")
     expect(current_path).to be(root_path)
 
+    visit declare_winner_path(auction)
+    expect(page).to have_content("You do not have that level of access")
+    expect(current_path).to be(root_path)
+
     visit live_auctions_path
     expect(page).to have_content("You do not have that level of access")
     expect(current_path).to be(root_path)
