@@ -1,0 +1,59 @@
+
+<div class="container center">
+  <div class= "row">
+    <div class="col s6"  style="padding-top:5vh;">
+      <div class="card z-depth-5" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
+        <div class="card-content center">
+          <h5 class="robot"> <%= current_user.first_name %>'s Profile</h5>
+          <br>
+          <h8 class="robot"> Username: <%= current_user.username %> </h8>
+        </div>
+        <div id="user">
+          <%= link_to "Bid", {:controller => "auctions", :action => "index" }, style: "border-style:solid;border-color:#ff4444;width:225px;display:inline-block;border-width:thin;"%>
+        </div>
+        <br>
+      </div>
+  </div>
+
+    <div class="col s6"  style="padding-top:5vh;">
+      <div class="card z-depth-5" style="border-style:solid;border-color:#ff4444;display:inline-block;border-width:thin;">
+        <div class="card-content center">
+          <h5 class="robot"> Recently won humans: </h5>
+          <br>
+          <%= render partial: "auction_grid", collection: @auctions[-3..-1], as: :auction %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="card business-card">
+      <div class="grid-item-container">
+          <div style="padding:15px;">
+            <div class="styled-button">
+            <%= link_to "Create a Business", new_business_path(@business), style: "color:#00aaaa;"%>
+            </div>
+            <div class="styled-button wide">
+            <%= link_to "Join an Existing Business", businesses_path, style: "color:#00aaaa;" %>
+          </div>
+          <div class="styled-button">
+            <%= link_to "Edit Profile", edit_user_path(current_user), style: "color:#00aaaa;" %>
+          </div>
+          <%= render partial: "admin/businesses/business_grid", collection: @user.businesses, as: :business %>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="card business-card">
+    <div class="grid-item-container">
+      <h2 class="center">Current Employees</h2>
+      <div class="row">
+        <% if current_user.humans %>
+          <%= render partial: "partials/grid_item", collection: current_user.humans, as: :human %>
+        <% else %>
+          <h2> You have no Employees, visit Human Shop to bid </h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container center">
+	<div class="card">
+		<span class="card-title">
+			<h1>Skynet Business Page</h1>
+		</span>
+		<div class="card-content center">
+
+			<br>
+			<div class="filter">
+				<h4>Pending Businesses:</h4>
+			</div>
+			<table class="bordered centered responsive-table">
+				<thead>
+					<tr>
+						<th data-field="BusinessName">Business Name</th>
+						<th data-field="Status">Status</th>
+						<th data-field="CreatedAt">Created At</th>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%= render partial: "partials/platform_admin_pending", collection: @businesses, as: :business %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="card">
+
+	<div class="card-content center">
+
+		<br>
+		<br>
+		<div class="filter">
+			<h4>All Businesses:</h4>
+		</div>
+		<table class="bordered centered responsive-table">
+			<thead>
+				<tr>
+					<th data-field="BusinessName">Business Name</th>
+					<th data-field="Deactivate">Status</th>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render partial: "partials/platform_admin_businesses", collection: @businesses, as: :business %>
+		</tbody>
+	</table>
+</div>
+</div>
+</div>

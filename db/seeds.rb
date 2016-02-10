@@ -12,8 +12,18 @@ class Seed
 
   def generate_roles
     Role.create(name: "registered_user")
-    Role.create(name: "business_admin")
     Role.create(name: "skynet")
+
+    admin = User.create(
+    first_name: "Mr",
+    last_name: "Admin",
+    username: "admin",
+    password: "password",
+    role: 1)
+    business = Business.create(name:"admin business", description:"We do work")
+    UserRole.create(role_id: Role.create(name: "business_admin").id, business_id: business.id, user_id: admin.id)
+    admin.businesses << business
+    puts "Admin created!"
   end
 
   def generate_users
@@ -28,16 +38,6 @@ class Seed
     end
   end
 
-  def generate_admin
-    User.create!(
-      first_name: "Mr",
-      last_name: "Admin",
-      username: "admin",
-      password: "password",
-      role: 1
-    )
-    puts "Admin created!"
-  end
 
   def generate_humans
     human_images = [
@@ -83,6 +83,9 @@ class Seed
     end
   end
 
+  def generate_admin
+
+  end
 
   private
 

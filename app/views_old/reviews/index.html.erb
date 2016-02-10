@@ -1,0 +1,15 @@
+<div class="container center" style="padding-top:7rem;">
+  <a class="waves-effect waves-light btn-large yellow darken-3" id="huge-page-button">
+    <%= button_to "Shop By Items", "#", method: :get, style:"border:0;font-style:normal;font-size:30px;text-transform:inherit;background:none;padding-top:2rem;"  %>
+  </a>
+  <a class="waves-effect waves-light btn-large light-blue darken-3" id="huge-page-button">
+    <div class="center">
+      <%= button_to "Shop By Travesty", "#", method: :get, style:"border:0;font-style:normal;font-size:30px;text-transform:inherit;background:none;padding-top:2rem;" %>
+    </div>
+  </a>
+  <div class="row" style="padding-top:4rem;">
+
+    <%= render partial: "partials/grid_review_item", collection: @items, as: :item %>
+
+  </div>
+</div>

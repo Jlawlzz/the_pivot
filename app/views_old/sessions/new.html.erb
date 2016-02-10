@@ -1,0 +1,25 @@
+<div id='gif-body'>
+
+
+<div class="container center" style="width:34rem;">
+
+    <div class="card">
+      <div class="card-content sign-in">
+        <%= simple_form_for :session, url: login_path, style:"font-size:2rem" do |f| %>
+
+        <%= f.label :username, "Username:" %>
+        <%= f.text_field :username %>
+        <br>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <br>
+        <div id="new_user_submit">
+          <a class="waves-effect waves-light btn-large yellow darken-3" id="huge-page-button" >
+            <%= f.submit "Sign In", id:"huge-page-button-text"%>
+          </a>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

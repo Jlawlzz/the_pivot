@@ -1,0 +1,19 @@
+<li>
+  <div class="card">
+    <div class="card-title">
+      <h5>Item: <%= link_to "#{review.item.title}", "#") %></h5>
+    </div>
+    <div class="card-content center">
+      <p>
+        <div class="row">
+          <p>Stars:</p>
+          <%= review.stars.times do |i| %>
+          <i class="material-icons">grade</i>
+          <% end %>
+        </div>
+      </p>
+      <p>Review: <%= review.text %></p>
+      <p><%= link_to "Delete Review", "#"), method: :delete %></p>
+    </div>
+  </div>
+</li>
