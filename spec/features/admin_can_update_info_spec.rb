@@ -1,13 +1,15 @@
 require 'rails_helper'
 
-RSpec.feature "admin user can edit personal details" do
-  scenario "admin can edit personal details and see changes on dashboard" do
-
+RSpec.feature "registered_user user can edit personal details" do
+  scenario "registered_user can edit personal details and see changes on dashboard" do
+    roles = create_roles
     admin = User.create(first_name: "Admin",
                         last_name: "guy",
                         username: "admin",
                         password: "password",
                         role: 1)
+
+    UserRole.create(user_id: admin.id, role_id: roles[0].id)
 
     login(admin)
 
