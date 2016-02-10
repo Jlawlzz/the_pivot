@@ -10,7 +10,7 @@ RSpec.feature "guest authorizations" do
     expect(page).to have_content("You do not have that level of access")
     expect(current_path).to eq(root_path)
 
-    visit doomsday_path
+    visit skynet_dashboard_path
     expect(page).to have_content("You do not have that level of access")
     expect(current_path).to eq(root_path)
 

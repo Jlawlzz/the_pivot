@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209040212) do
+ActiveRecord::Schema.define(version: 20160210195951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20160209040212) do
     t.integer  "business_id"
     t.integer  "user_id"
     t.integer  "winning_bid_id"
-
   end
 
   add_index "auctions", ["business_id"], name: "index_auctions_on_business_id", using: :btree
@@ -56,10 +55,11 @@ ActiveRecord::Schema.define(version: 20160209040212) do
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "description"
     t.string   "url"
+    t.string   "status",      default: "inactive"
   end
 
   create_table "humans", force: :cascade do |t|

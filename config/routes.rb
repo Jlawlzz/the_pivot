@@ -2,11 +2,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get '/dashboard', to: 'users#show'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/doomsday', to: 'sessions#doomsday'
   post '/declare_winner', to: 'auctions#declare_winner'
   get '/live_auctions', to: 'users#live_auctions'
   patch '/assign_business', to: 'users#assign_business'
@@ -22,7 +20,13 @@ Rails.application.routes.draw do
     resources :businesses, only: [:show], path: ':business', as: :business
   end
 
+  namespace :skynet do
+    resources :businesses, only: [:update]
+    get '/dashboard', to: 'users#show'
+  end
+
   resources :users, only: [:new, :create, :update, :edit]
+  get '/dashboard', to: 'users#show'
 
   resources :businesses, only: [:new, :create, :index]
   resources :businesses, only: [:show], path: ':business', as: :business
