@@ -38,9 +38,7 @@
           <div class="styled-button">
             <%= link_to "Edit Profile", edit_user_path(current_user), style: "color:#00aaaa;" %>
           </div>
-          <div class="row" style="padding-top:15px;">
-            <%= render partial: "admin/businesses/business_grid", collection: current_user.businesses, as: :business %>
-          </div>
+          <%= render partial: "admin/businesses/business_grid", collection: @user.businesses, as: :business %>
         </div>
       </div>
   </div>

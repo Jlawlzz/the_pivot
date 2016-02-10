@@ -7,6 +7,13 @@ class Seed
     seed.generate_humans
     seed.generate_businesses
     seed.generate_auctions
+    seed.generate_roles
+  end
+
+  def generate_roles
+    Role.create(name: "registered_user")
+    Role.create(name: "business_admin")
+    Role.create(name: "skynet")
   end
 
   def generate_users

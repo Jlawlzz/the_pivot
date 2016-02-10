@@ -20,6 +20,7 @@ class Auction < ActiveRecord::Base
     entity = bidder_of(auction)
     entity.auctions << auction
     auction.update_attribute(:status, "closed")
+    entity
   end
 
   def bidder_of(auction)

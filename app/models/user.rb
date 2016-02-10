@@ -7,16 +7,29 @@ class User < ActiveRecord::Base
   has_many :auctions, through: :bids
   has_many :winning_bids, through: :bids
 
-
   has_many :business_users
   has_many :businesses, through: :business_users
 
+  has_many :user_roles
+  has_many :roles, through: :user_roles
   has_many :auctions
   has_many :humans, through: :auctions
 
   validates :username, presence: true, uniqueness: true
 
   enum role: %w(default admin)
+
+  def skynet?
+    roles.exists?(name: "skynet")
+  end
+
+  def business_admin?
+    roles.exists?(name: "business_admin")
+  end
+
+  def registered_user?
+    roles.exists?(name: "registered_user")
+  end
 
   def total_purchased
     orders.sum(:total_price)
