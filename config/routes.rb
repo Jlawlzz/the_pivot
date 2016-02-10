@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get '/doomsday', to: 'sessions#doomsday'
   post '/declare_winner', to: 'auctions#declare_winner'
   get '/live_auctions', to: 'users#live_auctions'
-  patch '/decomission_human', to: 'humans#decomission_human'
   patch '/assign_business', to: 'users#assign_business'
+
+  resources :humans, only: [:index, :show]
+  patch '/decomission_human', to: 'humans#decomission_human'
 
   resources :auctions, only: [:index, :show]
 

@@ -43,9 +43,9 @@ class User < ActiveRecord::Base
   end
 
 
-  def auctions_won
+  def auctions_won(user)
     auctions = Auction.all.select do |auction|
-      (auction.winning_bid.bid.user_id == self.id)
+      (auction.winning_bid.bid.user_id == user.id)
     end
   end
 end

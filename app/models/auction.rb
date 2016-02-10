@@ -10,11 +10,13 @@ class Auction < ActiveRecord::Base
   end
 
   def highest_bid?(amount)
-    if  (high_bid < amount.to_i)
-      return true
-    else
-      return false
-    end
+    high_bid < amount.to_i
+    #
+    # if  (high_bid < amount.to_i)
+    #   return true
+    # else
+    #   return false
+    # end
   end
 
   def high_bid

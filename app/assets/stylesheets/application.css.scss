@@ -58,11 +58,15 @@
 
  .styled-button {
    border-style:solid;
-   border-color:#ff4444;
+   border-color:#00aaaa;
    width:225px;
    display:inline-block;
    border-width:thin;
  }
+
+.wide {
+  width:300px;
+}
 
  .business-image {
    height:200px;

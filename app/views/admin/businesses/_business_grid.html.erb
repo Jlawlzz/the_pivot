@@ -3,7 +3,7 @@
     <div class="card-content center">
       <%= image_tag "http://qr.hellfroze.net/#{business.name}/qr.png?", class: 'business-image'%>
         <div class="container" style="width: 100%;height: 60px;color:#00aaaa;">
-          <h6><%= business.name %></h6>
+          <%= link_to business.name, admin_business_path(business.url, business.id) %>
         </div>
       <div id="bid_partial">
         <%= link_to "Bid Now", {:controller => "auctions", :action => "index", :business_id => business.id }, class: 'styled-button'%>
