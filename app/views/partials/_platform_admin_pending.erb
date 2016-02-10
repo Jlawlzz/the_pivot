@@ -1,5 +1,5 @@
 <tr>
 	  <td><%= business.name %></td>
-	  <td><%= link_to "Activate", skynet_business_path(business), method: :put %><%= link_to "Deny", "#" %></td>
-		<td><%= business.created_at %></td>
+	  <td><%= link_to "Activate", skynet_activate_path(business), action: "patch" %></td>
+		<td><%= business.created_at.strftime("%B %e, %Y") %></td>
 </tr>

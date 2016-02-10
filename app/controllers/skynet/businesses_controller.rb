@@ -1,8 +1,14 @@
 class Skynet::BusinessesController < ApplicationController
 
-  def update
+  def activate
     @business = Business.find(params[:id])
     @business.update_attribute(:status, "active")
+    redirect_to skynet_dashboard_path
+  end
+
+  def deactivate
+    @business = Business.find(params[:id])
+    @business.update_attribute(:status, "inactive")
     redirect_to skynet_dashboard_path
   end
 end

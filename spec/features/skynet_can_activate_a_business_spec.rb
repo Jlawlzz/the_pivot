@@ -19,13 +19,13 @@ RSpec.feature "skynet business activation" do
 
     click_on "Activate"
 
-    expect(current_path).to be(skynet_dashboard_path
+    expect(current_path).to eq(skynet_dashboard_path)
     expect(page).to have_content("#{business.name}")
     expect(page).to have_link("Deactivate")
 
     click_on "Deactivate"
 
-    expect(current_path).to be(skynet_user_path(user))
+    expect(current_path).to eq(skynet_dashboard_path)
     expect(page).to have_content("#{business.name}")
     expect(page).to have_link("Activate")
   end

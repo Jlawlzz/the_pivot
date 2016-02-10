@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   namespace :skynet do
     resources :businesses, only: [:update]
+    put '/activate', to: 'businesses#activate'
     get '/dashboard', to: 'users#show'
+
   end
 
   resources :users, only: [:new, :create, :update, :edit]
