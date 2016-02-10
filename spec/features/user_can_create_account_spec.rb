@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "user can create account from home" do
   scenario "I see my dashboard" do
+
+    create_roles
+
     visit '/'
 
     expect(page).to have_content("Login")

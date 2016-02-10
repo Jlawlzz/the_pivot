@@ -9,6 +9,12 @@ class Seed
     seed.generate_auctions
   end
 
+  def generate_roles
+    Role.create(name: "registered_user")
+    Role.create(name: "business_admin")
+    Role.create(name: "skynet")
+  end
+
   def generate_users
     50.times do |i|
       user = User.create!(

@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  # before_action :business_not_found
+  before_action :business_not_found, only: [:show]
 
   def index
     @businesses = Business.all
@@ -12,13 +12,19 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.create(business_params)
-    current_user.businesses << @business
-    session[:business_id] = @business.id
-    redirect_to admin_business_path(@business.url, @business.id)
+    if @business.save
+      role = Role.find_by(name: 'business_admin')
+      current_user.user_roles << UserRole.create(business_id: @business.id, role_id: role.id)
+      current_user.businesses << @business
+      session[:business_id] = @business.id
+      redirect_to admin_business_path(@business.url, @business.id)
+    else
+      flash[:error] = {message: @user.errors.full_messages.join(", "), color: "red"}
+      redirect_to new_business_path
+    end
   end
 
   def show
-    business_not_found
     @business = Business.find(params[:id])
     @auctions = @business.auctions.where.not(status: "fired")
     session[:business_id] = @business.id
