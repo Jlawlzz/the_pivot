@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='http://dl.dafont.com/dl/?f=jungle' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+
+  <title>Hire a Human</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="gif-container" style="background-image:url(http://i.imgur.com/WTrMmzJ.jpg)">
+
+    <div id="gif-container">
+
+    <div id='gif-overlay'>
+
+  </div>
+</div>
+
+  <%= render partial: "partials/navbar", locals: {cart: @cart, user: @user} %>
+
+      <% flash.each do |type, hash| %>
+      <%= render partial: "partials/flash_card", locals: {message: hash["message"], color: hash["color"]} %>
+      <% end %>
+
+      <%= yield %>
+
+
+</body>
+</html>

@@ -76,7 +76,14 @@ class Seed
 
   def generate_businesses
     business = 10.times do |i|
-      business = Business.create!(name: Faker::Company.name)
+      business = Business.create!(name: Faker::Company.name, status: 'pending')
+      3.times do |i|
+        business.users = [random_user, random_user, random_user]
+      end
+      puts "Business #{i}: #{business.name} created!"
+    end
+    business = 10.times do |i|
+      business = Business.create!(name: Faker::Company.name, status: 'active')
       3.times do |i|
         business.users = [random_user, random_user, random_user]
       end
@@ -85,6 +92,12 @@ class Seed
   end
 
   def generate_auctions
+    auction = 10.times do |i|
+      auction = Auction.create!(
+        human_id: random_human.id
+      )
+      puts "Auction #{i}: Human: #{auction.human.scum_name} created!"
+    end
     auction = 10.times do |i|
       auction = Auction.create!(
         human_id: random_human.id
