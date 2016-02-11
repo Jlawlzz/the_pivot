@@ -1,8 +1,6 @@
 class AuctionsController < ApplicationController
-
   before_action :current_business
   before_action :set_business
-
 
   def index
     @auctions = Auction.where(status: "live")
@@ -26,8 +24,8 @@ class AuctionsController < ApplicationController
 
   private
 
-  def set_business
+    def set_business
       @name = current_business.name if (current_business != 'personal' && current_business)
       @name = "Yourself" if current_business == 'personal'
-  end
+    end
 end
