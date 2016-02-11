@@ -5,6 +5,9 @@
         <h1 class="brand-logo robot center"> <%= link_to "Hire a Human", auctions_path %> </h1>
       </div>
       <ul class="right hide-on-med-and-down">
+        <% if current_skynet %>
+          <li class = "hoverable"><%= link_to "Dashboard", skynet_dashboard_path %></li>
+        <% end %>
         <% if current_user %>
         <li class = "hoverable"><%= link_to "Live Auctions", live_auctions_path %></li>
         <% end %>
