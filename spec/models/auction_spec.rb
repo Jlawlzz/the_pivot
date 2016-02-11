@@ -53,7 +53,7 @@ RSpec.describe Auction, type: :model do
     auction.bids << bid
     auction.set_high_bid(bid.id)
 
-    expect(auction.bidder_of(auction)).to eq (user)
+    expect(auction.bidder).to eq (user)
   end
 
   it "can evaluate business placed bid" do
@@ -70,7 +70,7 @@ RSpec.describe Auction, type: :model do
     auction.bids << bid
     auction.set_high_bid(bid.id)
 
-    expect(auction.bidder_of(auction)).to eq (business)
+    expect(auction.bidder).to eq (business)
   end
 
   it "can assign winner of auction" do
@@ -89,7 +89,7 @@ RSpec.describe Auction, type: :model do
     auction.bids << bid
     auction.set_high_bid(bid.id)
 
-    expect(auction.assign_winner_of(auction)).to eq (business)
+    expect(auction.assign_winner).to eq (business)
   end
 
 end
