@@ -11,7 +11,7 @@ class Auction < ActiveRecord::Base
   end
 
   def self.update_auctions
-    Auctions.where(status: 'live').each do |auction|
+    Auction.where(status: 'live').each do |auction|
       assign_winner_of(auction) if auction.time_left < 0
     end
   end
