@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210041108) do
+ActiveRecord::Schema.define(version: 20160210195951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "auctions", force: :cascade do |t|
+    t.integer  "winning_bid",     default: 0
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "status",          default: "live"
@@ -55,10 +56,11 @@ ActiveRecord::Schema.define(version: 20160210041108) do
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "description"
     t.string   "url"
+    t.string   "status",      default: "pending"
   end
 
   create_table "humans", force: :cascade do |t|
