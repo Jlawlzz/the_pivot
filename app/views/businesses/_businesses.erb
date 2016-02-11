@@ -1,7 +1,10 @@
 <tr>
 	  <td><%= link_to business.name, business_path(business.url, business.id) %></td>
 		<% if current_user %>
-	  	<td><%= link_to "Join #{business.name}", assign_business_path(business.id), controller: :users_controller, method: :patch %></td>
+			<%= form_for business, url: assign_business_path(business.id), method: :patch do |f| %>
+			<%= f.hidden_field :business, :value => business.id%>
+			<td><%= f.submit "Join #{business.name}"%></td>
+			<% end %>
 		<% else %>
 	  	<td><%= link_to "Login/Signup", login_path %></td>
 		<% end %>
