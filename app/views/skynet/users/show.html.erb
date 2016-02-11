@@ -13,13 +13,13 @@
 				<thead>
 					<tr>
 						<th data-field="BusinessName">Business Name</th>
-						<th data-field="Status">Status</th>
+						<th data-field="Status">Action</th>
 						<th data-field="CreatedAt">Created At</th>
 					</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%= render partial: "partials/platform_admin_pending", collection: @pending, as: :pending %>
+				<%= render partial: "platform_admin_pending", collection: @pending, as: :pending %>
 			</tbody>
 		</table>
 		<h4>Active Businesses:</h4>
@@ -33,7 +33,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%= render partial: "partials/platform_admin_active", collection: @active, as: :active %>
+			<%= render partial: "platform_admin_active", collection: @active, as: :active %>
 		</tbody>
 	</table>
 	<h4>Inactive Businesses:</h4>
@@ -47,7 +47,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%= render partial: "partials/platform_admin_inactive", collection: @inactive, as: :inactive %>
+		<%= render partial: "platform_admin_inactive", collection: @inactive, as: :inactive %>
 	</tbody>
 </table>
 	</div>

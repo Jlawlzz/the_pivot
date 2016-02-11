@@ -11,8 +11,7 @@ class Seed
   end
 
   def generate_roles
-      Role.create(name: "registered_user")
-      Role.create(name: "skynet")
+    Role.create(name: "registered_user")
 
       admin = User.create(
       first_name: "Mr",
@@ -35,7 +34,7 @@ class Seed
       UserRole.create(business_id: business.id, role_id: Role.create(name: "skynet").id, user_id: skynet.id)
       skynet.businesses << business
       puts "Skynet created!"
-    end
+  end
 
   def generate_users
     50.times do |i|
@@ -49,16 +48,6 @@ class Seed
     end
   end
 
-  def generate_admin
-    User.create!(
-      first_name: "Mr",
-      last_name: "Admin",
-      username: "admin",
-      password: "password",
-      role: 1
-    )
-    puts "Admin created!"
-  end
 
   def generate_humans
     human_images = [
@@ -104,6 +93,9 @@ class Seed
     end
   end
 
+  def generate_admin
+
+  end
 
   private
 

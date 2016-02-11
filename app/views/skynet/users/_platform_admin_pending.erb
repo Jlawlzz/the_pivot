@@ -1,0 +1,5 @@
+<tr>
+	  <td><%= pending.name %></td>
+	  <td><%= link_to "Approve", skynet_activate_path(:id => pending.id), action: "activate", method: :put %> / <%= link_to "Decline", skynet_decline_path(:id => pending.id), action: "decline", method: :delete %> </td>
+		<td><%= pending.created_at.strftime("%B %e, %Y") %></td>
+</tr>

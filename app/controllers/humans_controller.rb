@@ -11,7 +11,7 @@ class HumansController < ApplicationController
   end
 
   def decomission_human
-    business = Business.find(current_business.id)
+    business = Business.find(session[:business_id])
     human = Human.find(params[:format])
     human.auctions.last.update_attribute(:status, 'fired')
     human.auctions << Auction.create
