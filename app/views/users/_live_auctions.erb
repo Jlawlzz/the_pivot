@@ -1,6 +1,5 @@
 <tr>
-  <td><%= auction[:auction].human.scum_name %></td>
-  <td>1:07</td>
-  <td><%= auction[:user_bid] %></td>
-  <td><%= auction[:auction].highest_bid %></td>
+  <td><%= link_to auction[:auction].human.scum_name, auction_path(auction[:auction]) %></td>
+  <td>$<%= auction[:user_bid].amount %></td>
+  <td>$<%= auction[:auction].high_bid %></td>
 </tr>
