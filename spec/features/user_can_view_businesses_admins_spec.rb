@@ -5,8 +5,8 @@ RSpec.feature "user can view businesses" do
 
     user1 = create(:user)
     human1 = Human.create(scum_name: "ID1212")
-    b1 = Business.create(name:"Porta Potty", description:"We clean up after nasty humans")
-    b2 = Business.create(name:"Robot Shoe Makers", description:"Because metal feet no good for floor")
+    b1, b2 = create_list(:business, 2)
+
     auction1 = Auction.new
     auction1.human = human1
     auction1.save
@@ -22,16 +22,16 @@ RSpec.feature "user can view businesses" do
 
     click_link "View Businesses"
     expect(current_path).to eq businesses_path
-    expect(page).to have_content "Porta Potty"
-    expect(page).to have_content "Robot Shoe Makers"
+    expect(page).to have_content b1.name
+    expect(page).to have_content b2.name
 
-    click_link "Join Porta Potty"
-    expect(current_path).to eq "/admin/porta-potty/#{b1.id}"
-    expect(page).to have_content "Porta Potty"
-    expect(page).to_not have_content "Robot Shoe Makers"
+    click_link "Join #{b1.name}"
+    expect(current_path).to eq "/admin/#{b1.url}/#{b1.id}"
+    expect(page).to have_content b1.name
+    expect(page).to_not have_content b2.name
 
-    expect(page).to have_content "Porta Potty"
-    expect(page).to_not have_content "Robot Shoe Makers"
+    expect(page).to have_content b1.name
+    expect(page).to_not have_content b2.name
     expect(page).to have_content "ID1212"
   end
 

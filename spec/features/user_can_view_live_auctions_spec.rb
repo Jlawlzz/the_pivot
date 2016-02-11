@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.feature "user can view live auction" do
   scenario "Unregistered user sees humans on auctions page" do
 
-    human1 = Human.create(scum_name:"Barry" , bio:"work work work work work" , url:"http://www.humansfordogs.com/wp-content/uploads/2010/03/6a00d8341c153053ef012876a0b6c5970c-pi.jpeg")
-    human2 = Human.create(scum_name:"Lisa" , bio:"work work work work work" , url:"http://exit78.com/wp-content/uploads//2009/08/eyes_of_the_great_depression_035.jpg")
+    humans = create_list(:human, 2)
+    human1 = humans[0]
+    human2 = humans[1]
 
     auction1 = Auction.new
     auction2 = Auction.new
@@ -14,9 +15,9 @@ RSpec.feature "user can view live auction" do
     auction2.save
 
     visit auctions_path
-    expect(page).to have_content("Barry")
+    expect(page).to have_content(human1.scum_name)
 
-    expect(page).to have_content("Lisa")
+    expect(page).to have_content(human2.scum_name)
 
   end
 
