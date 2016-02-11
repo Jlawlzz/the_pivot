@@ -1,0 +1,5 @@
+<tr>
+	  <td><%= active.name %></td>
+		<td><%= link_to "Deactivate", skynet_deactivate_path(:id => active.id), action: "deactivate", method: :put  %></td>
+		<td><%= active.created_at.strftime("%B %e, %Y") %></td>
+</tr>

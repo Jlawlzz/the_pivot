@@ -6,7 +6,7 @@ RSpec.feature "business admin user authorizations" do
     business = create(:business)
     user = create(:user)
 
-    visit doomsday_path
+    visit skynet_dashboard_path(user)
     expect(page).to have_content("You do not have that level of access")
     expect(current_path).to eq(root_path)
 
