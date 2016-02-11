@@ -3,15 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-  before_action :set_cart, :current_user, :authorize!
+  before_action :current_user, :authorize!
   helper_method :business_not_found
 
   def business_not_found
     redirect_to businesses_path if Business.find_by(url: params[:business]).nil?
-  end
-
-  def set_cart
-    @cart = Cart.new(session[:cart])
   end
 
   def current_user
