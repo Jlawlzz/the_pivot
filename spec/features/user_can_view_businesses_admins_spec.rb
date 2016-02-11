@@ -25,7 +25,7 @@ RSpec.feature "user can view businesses" do
     expect(page).to have_content b1.name
     expect(page).to have_content b2.name
 
-    click_link "Join #{b1.name}"
+    click_button "Join #{b1.name}"
     expect(current_path).to eq "/admin/#{b1.url}/#{b1.id}"
     expect(page).to have_content b1.name
     expect(page).to_not have_content b2.name

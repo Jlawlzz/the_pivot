@@ -40,7 +40,7 @@ RSpec.feature "user can create account from home" do
     expect(page).to have_content "#{businesses[0].name}"
     expect(page).to have_content "#{businesses[1].name}"
 
-    click_link "Join #{businesses[0].name}"
+    click_button "Join #{businesses[0].name}"
 
     expect(current_path).to eq admin_business_path(businesses[0].url, businesses[0].id)
     expect(page).to have_content "#{businesses[0].name}"
