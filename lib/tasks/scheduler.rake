@@ -6,6 +6,7 @@ task :update_auction => :environment do
       Auction.where(status: 'live').each do |auction|
         assign_winner_of(auction) if auction.time_left < 0
       end
+    end
   end
   puts "done."
 end
