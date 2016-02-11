@@ -8,12 +8,11 @@ RSpec.feature "skynet business approval, deactivation, and activation" do
     password: "password")
     roles = create_roles
     UserRole.create(user_id: skynet.id, role_id: roles[2].id)
-    business = create(:business)
+    business = Business.create(name: "We Make Things", description: "Much better", status: "pending")
 
     login(skynet)
 
     expect(current_path).to eq(skynet_dashboard_path)
-
     expect(page).to have_content("#{business.name}")
     expect(page).to have_link("Approve")
 
