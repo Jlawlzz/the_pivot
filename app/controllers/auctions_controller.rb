@@ -11,11 +11,10 @@ class AuctionsController < ApplicationController
   end
 
   def declare_winner
-    # WinnerPresenter(args) -> ____.winning_bid
     @auction = Auction.find(params[:format])
-    @business = Business.find(current_business.id) if current_business != 'personal'
+    @business = @auction.business
     @auction.assign_winner
-    if current_business != 'personal'
+    if @auction.business
       redirect_to business_path(@business.url, @business.id)
     else
       redirect_to dashboard_path

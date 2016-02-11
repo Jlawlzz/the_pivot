@@ -32,17 +32,12 @@ class User < ActiveRecord::Base
     roles.exists?(name: "registered_user")
   end
 
-  def total_purchased
-    orders.sum(:total_price)
-  end
-
   def live_auctions
     live_auctions = auctions.where(status: 'live')
     live_auctions.map do |auction|
       {auction: auction, user_bid: auction.bids.where(user_id: self.id).last.amount}
     end
   end
-
 
   def auctions_won(user)
     auctions = Auction.all.select do |auction|

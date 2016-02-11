@@ -1,13 +1,5 @@
 class HumansController < ApplicationController
 
-  def index
-    @humans = Human.all
-  end
-
-  def show
-    @human = Human.find(params[:id])
-  end
-
   def decomission_human
     business = Business.find(session[:business_id])
     @human = Human.find(params[:format])
