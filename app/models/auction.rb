@@ -38,7 +38,7 @@ class Auction < ActiveRecord::Base
   end
 
   def get_expire_date
-     Time.now + 10000
+     Time.now + 240
   end
 
   def highest_bid?(amount)
