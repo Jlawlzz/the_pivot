@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :businesses, only: [:update]
     put '/deactivate', to: 'businesses#deactivate'
     put '/activate', to: 'businesses#activate'
+    delete '/decline', to: 'businesses#decline'
     get '/dashboard', to: 'users#show'
   end
 

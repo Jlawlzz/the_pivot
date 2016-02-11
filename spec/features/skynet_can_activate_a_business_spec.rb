@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "skynet business activation" do
-  scenario "skynet can activate a new business on his dashboard and then sees the new business as activated and vice versa" do
+RSpec.feature "skynet business approval, deactivation, and activation" do
+  scenario "skynet can approve a new business on his dashboard and then sees the new business as activated and vice versa" do
     skynet = User.create(first_name: "skynet",
     last_name: "robot",
     username: "admin",
@@ -15,9 +15,9 @@ RSpec.feature "skynet business activation" do
     expect(current_path).to eq(skynet_dashboard_path)
 
     expect(page).to have_content("#{business.name}")
-    expect(page).to have_link("Activate")
+    expect(page).to have_link("Approve")
 
-    click_on "Activate"
+    click_on "Approve"
 
     expect(current_path).to eq(skynet_dashboard_path)
     expect(page).to have_content("#{business.name}")
@@ -28,5 +28,9 @@ RSpec.feature "skynet business activation" do
     expect(current_path).to eq(skynet_dashboard_path)
     expect(page).to have_content("#{business.name}")
     expect(page).to have_link("Activate")
+
+    click_on "Activate"
+    expect(page).to have_content("#{business.name}")
+    expect(page).to have_link("Deactivate")
   end
 end
