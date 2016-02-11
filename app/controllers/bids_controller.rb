@@ -31,7 +31,7 @@ class BidsController < ApplicationController
     end
 
     def bid_too_low_alert
-      flash[:error] = {color: "red", message: "Must place bid higher than current high bid."}
+      flash[:notice] = {color: "red", message: "Must place bid higher than current high bid."}
       redirect_to auction_path(set_auction_id)
     end
 end
