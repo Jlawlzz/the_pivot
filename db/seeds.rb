@@ -32,7 +32,7 @@ class Seed
       password: "password",
       role: 1
       )
-      UserRole.create(business_id: business.id, role_id: Role.create(name: "skynet)").id, user_id: skynet.id)
+      UserRole.create(business_id: business.id, role_id: Role.create(name: "skynet").id, user_id: skynet.id)
       skynet.businesses << business
       puts "Skynet created!"
     end

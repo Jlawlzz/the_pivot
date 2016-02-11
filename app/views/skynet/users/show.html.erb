@@ -19,19 +19,47 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%= render partial: "partials/platform_admin_pending", collection: @businesses, as: :business %>
+				<%= render partial: "partials/platform_admin_pending", collection: @pending, as: :pending %>
 			</tbody>
 		</table>
+		<h4>Active Businesses:</h4>
+		<table class="bordered centered responsive-table">
+			<thead>
+				<tr>
+					<th data-field="BusinessName">Business Name</th>
+					<th data-field="Status">Status</th>
+					<th data-field="CreatedAt">Created At</th>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render partial: "partials/platform_admin_active", collection: @active, as: :active %>
+		</tbody>
+	</table>
+	<h4>Inactive Businesses:</h4>
+	<table class="bordered centered responsive-table">
+		<thead>
+			<tr>
+				<th data-field="BusinessName">Business Name</th>
+				<th data-field="Status">Status</th>
+				<th data-field="CreatedAt">Created At</th>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render partial: "partials/platform_admin_inactive", collection: @inactive, as: :inactive %>
+	</tbody>
+</table>
 	</div>
 </div>
 <div class="card">
 
-	<div class="card-content center">
+	<!-- <div class="card-content center">
 
 		<br>
 		<br>
 		<div class="filter">
-			<h4>All Businesses:</h4>
+			<h4>All Active Businesses:</h4>
 		</div>
 		<table class="bordered centered responsive-table">
 			<thead>
@@ -45,6 +73,6 @@
 			<%= render partial: "partials/platform_admin_businesses", collection: @businesses, as: :business %>
 		</tbody>
 	</table>
-</div>
+</div> -->
 </div>
 </div>
