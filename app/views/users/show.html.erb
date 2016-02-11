@@ -51,7 +51,7 @@
       <h2 class="center">Current Employees</h2>
       <div class="row">
         <% if current_user.humans %>
-          <%= render partial: "partials/grid_item", collection: current_user.humans, as: :human %>
+          <%= render partial: "employee_grid", collection: current_user.humans, as: :human %>
         <% else %>
           <h2> You have no Employees, visit Human Shop to bid </h2>
         <% end %>
