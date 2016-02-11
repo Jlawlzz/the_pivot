@@ -40,10 +40,13 @@ class UsersController < ApplicationController
   end
 
   def live_auctions
-    live_auctions = current_user.auctions.where(status: 'live')
-    @live_auctions = live_auctions.map do |auction|
-      {auction: auction, user_bid: auction.bids.where(user_id: @user.id).last.amount}
+    bids = current_user.bids
+    @live_auctions = bids.map do |bid|
+      if bid.auction.status == 'live'
+        {auction: bid.auction, user_bid: bid}
+      end
     end
+    @live_auctions.compact!
   end
 
   private
