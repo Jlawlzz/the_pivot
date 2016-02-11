@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       role = Role.find_by(name: "registered_user")
-      # binding.pry
       UserRole.create(user_id: @user.id, role_id: role.id)
       redirect_to dashboard_path
     else
@@ -20,11 +19,8 @@ class UsersController < ApplicationController
 
   def show
     if session[:user_id]
-      # show
-      # UserPresenter(user)
-      @user = User.find(session[:user_id])
-      # @reviews = @user.reviews
-      # @business = Business.new
+      @user = current_user
+      @businesses = @user.businesses
       @humans = @user.humans
       @auctions = current_user.auctions_won(current_user)
     else

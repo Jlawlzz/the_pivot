@@ -5,7 +5,11 @@
             <%= link_to business.name, admin_business_path(business.url, business.id) %>
           </div>
         <div id="bid_partial">
-          <%= link_to "Bid Now", {:controller => "auctions", :action => "index", :business_id => business.id }, class: 'styled-button'%>
+          <% if business.status == "active" %>
+            <%= link_to "Bid Now", {:controller => "auctions", :action => "index", :business_id => business.id }, class: 'styled-button'%>
+          <% else %>
+            <span class="deactivated-button">Deactivated</span>
+          <% end %>
         </div>
         <br>
   </div>

@@ -39,7 +39,7 @@
             <%= link_to "Edit Profile", edit_user_path(current_user), style: "color:#00aaaa;" %>
           </div>
           <div class="row">
-            <%= render partial: 'partials/business_grid', collection: @user.businesses, as: :business %>
+            <%= render partial: 'partials/business_grid', collection: @businesses, as: :business %>
           </div>
         </div>
       </div>

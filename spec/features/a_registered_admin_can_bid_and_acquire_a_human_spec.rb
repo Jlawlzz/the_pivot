@@ -5,8 +5,7 @@ RSpec.feature "admin can bid and acquire human" do
     roles = create_roles
     human = create(:human)
     auction = Auction.create(human_id: human.id)
-    business = create(:business)
-
+    business = create(:business, status: "active")
     admin = User.create(first_name: "jordan",
                         last_name: "guy",
                         username: "admin",
