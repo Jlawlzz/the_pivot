@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  post '/notification' => 'notification#create'
 
   resources :humans, only: [:index, :show]
   patch '/decomission_human', to: 'humans#decomission_human'

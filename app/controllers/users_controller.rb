@@ -63,6 +63,9 @@ class UsersController < ApplicationController
       role = Role.find_by(name: "registered_user")
       UserRole.create(user_id: @user.id, role_id: role.id)
       redirect_to dashboard_path
+      #send email upon account creation
+      FriendNotifier.inform(current_user, 'charissalaw@gmail.com').deliver_later
+      flash[:notice] = {color: "green", message: "Email verification has been sent to the administrator."}
     end
 
     def create_unsuccessfull
