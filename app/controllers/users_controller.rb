@@ -23,10 +23,10 @@ class UsersController < ApplicationController
       # show
       # UserPresenter(user)
       @user = User.find(session[:user_id])
-      @reviews = @user.reviews
-      @business = Business.new
+      # @reviews = @user.reviews
+      # @business = Business.new
       @humans = @user.humans
-      @auctions = @user.auctions_won(current_user)
+      @auctions = current_user.auctions_won(current_user)
     else
       flash[:error] = {message: "Must be signed in to see dashboard.", color: "red"}
       redirect_to '/'
