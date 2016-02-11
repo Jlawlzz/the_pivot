@@ -13,23 +13,34 @@ RSpec.feature "skynet business approval, deactivation, and activation" do
     login(skynet)
 
     expect(current_path).to eq(skynet_dashboard_path)
-    expect(page).to have_content("#{business.name}")
-    expect(page).to have_link("Approve")
+    within("#pending") do
+      expect(page).to have_content("#{business.name}")
+      expect(page).to have_link("Approve")
+    end
 
     click_on "Approve"
 
     expect(current_path).to eq(skynet_dashboard_path)
-    expect(page).to have_content("#{business.name}")
-    expect(page).to have_link("Deactivate")
+
+    within("#active") do
+      expect(page).to have_content("#{business.name}")
+      expect(page).to have_link("Deactivate")
+    end
 
     click_on "Deactivate"
 
     expect(current_path).to eq(skynet_dashboard_path)
-    expect(page).to have_content("#{business.name}")
-    expect(page).to have_link("Activate")
+
+    within("#inactive") do
+      expect(page).to have_content("#{business.name}")
+      expect(page).to have_link("Activate")
+    end
 
     click_on "Activate"
-    expect(page).to have_content("#{business.name}")
-    expect(page).to have_link("Deactivate")
+
+    within("#active") do
+      expect(page).to have_content("#{business.name}")
+      expect(page).to have_link("Deactivate")
+    end
   end
 end
