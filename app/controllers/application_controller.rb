@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user, :current_business
+  helper_method :current_user, :current_business, :current_skynet
   before_action :current_user, :authorize!
   helper_method :business_not_found
 
@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def authorized?
     current_permission.allow?(params[:controller], params[:action])
+  end
+
+  def current_skynet
+    current_user && (current_user.roles.where(name: "skynet").count == 1)
   end
 
   def authorize!
