@@ -7,14 +7,14 @@
 
 <div class = "container">
   <div class="col s12"  style="padding-top:10vh;">
-    <%= render partial: "business_grid", collection: current_user.businesses, as: :business %>
+    <%= render partial: 'partials/business_grid', collection: current_user.businesses, as: :business %>
   </div>
 
 <div class="card">
   <div class="grid-item-container">
     <h2 class="center">Current Admins</h2>
     <div class="row">
-        <%= render partial: "admin_grid", collection: @admins, as: :admin %>
+        <%= render partial: "partials/admin_grid", collection: @admins, as: :admin %>
     </div>
   </div>
 </div>
