@@ -4,7 +4,7 @@ FactoryGirl.define do
     name
     description
     url
-    status :inactive
+    status :pending
   end
 
   sequence :name do |n|
