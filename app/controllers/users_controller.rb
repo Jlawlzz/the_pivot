@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(set_user)
-    flash[:notice] = "Your detaills have been updated"
+    flash[:notice] = "Your details have been updated"
     redirect_to dashboard_path
   end
 

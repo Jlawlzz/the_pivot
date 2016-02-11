@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  patch '/assign_business', to: 'users#assign_business'
   root 'home#index'
 
   get '/login', to: 'sessions#new'
@@ -29,7 +30,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit]
   get '/dashboard', to: 'users#show'
-  patch '/assign_business', to: 'users#assign_business'
   get '/live_auctions', to: 'users#live_auctions'
 
   resources :businesses, only: [:new, :create, :index]
