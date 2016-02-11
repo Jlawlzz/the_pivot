@@ -1,42 +1,41 @@
-# require 'rails_helper'
-#
-# RSpec.feature "admin user can fire admin" do
-#   scenario "admin can fire an admin" do
-#     roles = create_roles
-#     business = create(:business)
-#
-#     admin1 = User.create(first_name: "Admin",
-#                         last_name: "guy",
-#                         username: "admin",
-#                         password: "password",
-#                         role: 1)
-#
-#     admin2 = User.create(first_name: "Butt",
-#                         last_name: "Face",
-#                         username: "ButtFace",
-#                         password: "password",
-#                         role: 1)
-#
-#
-#     admin1.user_roles << UserRole.create(business_id: business.id, role_id: roles[1].id)
-#     admin1.user_roles << UserRole.create(role_id: roles[0].id)
-#     admin2.user_roles << UserRole.create(business_id: business.id, role_id: roles[1].id)
-#     admin2.user_roles << UserRole.create(role_id: roles[0].id)
-#
-#     business.users << admin1
-#     business.users << admin2
-#
-#     login(admin1)
-#
-#     visit admin_business_path(business.url, business.id)
-#
-#     expect(page).to have_content("#{admin1.username}")
-#     expect(page).to have_content("#{admin2.username}")
-#
-#     click_button "Vote to Fire"
-#
-#     expect(current_path).to eq admin_business_path(business.url, business.id)
-#     expect(page).to have_content("#{admin1.username}")
-#     expect(page).to_not have_content("#{admin2.username}")
-#   end
-# end
+require 'rails_helper'
+
+RSpec.feature "admin user can fire employees" do
+  scenario "admin can fire a human and human appears back on the auction page" do
+    roles = create_roles
+    business = create(:business)
+
+    3.times do |t|
+      business.auctions << Auction.create(human_id: create(:human).id)
+    end
+
+    admin = User.create(first_name: "Admin",
+                        last_name: "guy",
+                        username: "admin",
+                        password: "password",
+                        role: 1)
+
+
+    admin.user_roles << UserRole.create(business_id: business.id, role_id: roles[1].id)
+    admin.user_roles << UserRole.create(role_id: roles[0].id)
+
+    business.users << admin
+    login(admin)
+    humans = [Human.first, Human.last]
+
+    visit admin_business_path(business.url, business.id)
+
+    expect(page).to have_content("#{humans[0].scum_name}")
+    expect(page).to have_content("#{humans[1].scum_name}")
+
+    click_link "Decomission #{humans[0].scum_name}!"
+
+    expect(current_path).to eq admin_business_path(business.url, business.id)
+    expect(page).to have_content("#{humans[1].scum_name}")
+    expect(page).to_not have_content("#{humans[0].scum_name}")
+
+    visit auctions_path
+    expect(page).to have_content("#{humans[0].scum_name}")
+    expect(page).to have_content("Current Bid: $0")
+  end
+end

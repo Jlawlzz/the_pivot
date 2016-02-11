@@ -3,7 +3,6 @@ class BidsController < ApplicationController
   def create
     @auction = Auction.find(set_auction_id)
     if @auction.highest_bid?(params[:bid][:amount])
-
       bid = Bid.create(set_bid(params))
       @auction.set_high_bid(bid.id)
       flash[:notice] = {color: "green", message: "You have succesfully placed a bid of #{bid.amount}!"}

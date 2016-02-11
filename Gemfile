@@ -49,7 +49,7 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem "factory_girl_rails", :require => false
-  gem "simplecov"
+  gem "simplecov", :require => false, :group => :test
   gem 'shoulda', '~> 3.5'
   gem 'shoulda-matchers', '~> 2.0'
 end
