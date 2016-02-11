@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "skynet deactivates a business" do
-  scenario "skynet can deactivate a business and it moves to the 'deactiated' list of businesses with an 'activate' button" do
+  scenario "skynet can deactivate a business and it moves to the 'deactivated' list of businesses with an 'activate' button" do
     skynet = User.create(first_name: "skynet",
     last_name: "robot",
     username: "admin",
