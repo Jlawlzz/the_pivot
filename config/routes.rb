@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :businesses, only: [:show], path: ':business', as: :business
+    resources :users, only: [:update]
   end
 
   namespace :skynet do

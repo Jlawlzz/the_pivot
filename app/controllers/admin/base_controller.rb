@@ -1,5 +1,4 @@
 class Admin::BaseController < ApplicationController
-  before_action :business_not_found
 
   helper_method :current_business
 

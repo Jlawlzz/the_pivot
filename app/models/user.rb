@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :roles, through: :user_roles
   has_many :auctions
   has_many :humans, through: :auctions
+  has_many :votes
 
   validates :username, presence: true, uniqueness: true
 
@@ -47,5 +48,9 @@ class User < ActiveRecord::Base
     auctions = Auction.all.select do |auction|
       (auction.winning_bid.bid.user_id == user.id)
     end
+  end
+
+  def terminate?(business)
+    (business.users.count / self.votes.where(business_id: business.id).count) <= 2
   end
 end
