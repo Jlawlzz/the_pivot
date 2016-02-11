@@ -10,12 +10,6 @@ class Admin::BaseController < ApplicationController
     redirect_to businesses_path if current_business.nil?
   end
 
-  # before_action :require_admin
-
-  # def require_admin
-  #   render file: "/public/404" unless current_admin?
-  # end
-
   def show
 
   end

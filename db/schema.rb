@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160211055435) do
   enable_extension "plpgsql"
 
   create_table "auctions", force: :cascade do |t|
+    t.integer  "winning_bid",     default: 0
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "status",          default: "live"

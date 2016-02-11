@@ -59,5 +59,6 @@ class PermissionService
       return true if controller == "businesses" && action.in?(%w(new index create))
       return true if controller == "admin/businesses" && action.in?(%w(show))
       return true if controller == "businesses" && action.in?(%w(new create index))
+      return true if controller == "bids" && action.in?(%w(new create index))
     end
 end
