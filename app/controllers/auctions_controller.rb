@@ -1,6 +1,8 @@
 class AuctionsController < ApplicationController
 
+  before_action :current_business
   before_action :set_business
+
 
   def index
     @auctions = Auction.where(status: "live")
@@ -13,20 +15,19 @@ class AuctionsController < ApplicationController
   def declare_winner
     # WinnerPresenter(args) -> ____.winning_bid
     @auction = Auction.find(params[:format])
-    @business = Business.find(current_business.id)
+    @business = Business.find(current_business.id) if current_business != 'personal'
     @auction.assign_winner
-    redirect_to business_path(@business.url, @business.id)
+    if current_business != 'personal'
+      redirect_to business_path(@business.url, @business.id)
+    else
+      redirect_to dashboard_path
+    end
   end
 
   private
 
   def set_business
-    if params[:business_id]
-      @business = Business.find(params[:business_id])
-      session[:business_id] = @business.id
-      @name = @business.name
-    else
-      @name = "Yourself"
-    end
+      @name = current_business.name if (current_business != 'personal' && current_business)
+      @name = "Yourself" if current_business == 'personal'
   end
 end
