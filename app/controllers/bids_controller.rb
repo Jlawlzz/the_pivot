@@ -8,7 +8,7 @@ class BidsController < ApplicationController
       flash[:notice] = {color: "green", message: "You have succesfully placed a bid of #{bid.amount}!"}
       redirect_to auction_path(set_auction_id)
     else
-      flash[:error] = {color: "red", message: "Must place bid higher than current high bid."}
+      flash[:notice] = {color: "red", message: "Must place bid higher than current high bid."}
       redirect_to auction_path(set_auction_id)
     end
   end

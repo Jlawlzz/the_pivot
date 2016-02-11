@@ -87,4 +87,38 @@ RSpec.feature "admin can bid and acquire human" do
     expect(page).to_not have_content(human.scum_name)
 
   end
+
+  scenario "business wins bid and admin see human on business dashobaord" do
+    roles = create_roles
+    human = create(:human)
+    auction = Auction.create(human_id: human.id)
+    bid = Bid.create(amount: 2000)
+    auction.bids << bid
+    auction.set_high_bid(bid.id)
+    business = create(:business)
+
+    admin = User.create(first_name: "jordan",
+                        last_name: "guy",
+                        username: "admin",
+                        password: "password",
+                        role: 1)
+
+    business.users << admin
+    UserRole.create(business_id: business.id, user_id: admin.id, role_id: roles[1].id)
+    UserRole.create(user_id: admin.id, role_id: roles[0].id)
+
+    login(admin)
+
+    visit auction_path(auction)
+    ApplicationController.any_instance.stub(:current_business).and_return(business)
+
+    within("#bid") do
+      fill_in "Amount", with: "1000"
+      click_on "Bid Now!"
+    end
+
+    visit business_path(business.url, business.id)
+
+
+  end
 end
