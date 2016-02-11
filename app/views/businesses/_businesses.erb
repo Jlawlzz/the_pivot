@@ -3,6 +3,6 @@
 		<% if current_user %>
 	  	<td><%= link_to "Join #{business.name}", assign_business_path(business), controller: :users_controller, method: :patch %></td>
 		<% else %>
-	  	<td><%= link_to "Login/Signup", "/" %></td>
+	  	<td><%= link_to "Login/Signup", login_path %></td>
 		<% end %>
 </tr>

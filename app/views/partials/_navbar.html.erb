@@ -2,7 +2,7 @@
   <nav id="nav_f" class="nav_custom" role="navigation">
     <div class="nav-wrapper">
       <div class"title-wrapper">
-        <h1 class="brand-logo robot center"> <%= link_to "Hire a Human", auctions_path %> </h1>
+        <h1 class="brand-logo robot center"> <%= link_to "Hire a Human", root_path %> </h1>
       </div>
       <ul class="right hide-on-med-and-down">
         <% if current_skynet %>
@@ -15,7 +15,6 @@
       </ul>
       <ul class="left hide-on-med-and-down">
         <% if current_user %>
-
         <li> <%= link_to "Logged in as #{current_user.first_name}", '/dashboard'%></li>
 
         <li> <%= link_to "Logout", logout_path, method: :delete %></li>

@@ -6,5 +6,4 @@ class Skynet::UsersController < ApplicationController
     @active = @businesses.where(status: "active")
     @inactive = @businesses.where(status: "inactive")
   end
-
 end
