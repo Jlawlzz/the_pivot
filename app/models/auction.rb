@@ -10,12 +10,6 @@ class Auction < ActiveRecord::Base
    self.expiration_date = get_expire_date unless self.expiration_date
   end
 
-  def self.update_auctions
-    Auction.where(status: 'live').each do |auction|
-      assign_winner_of(auction) if auction.time_left < 0
-    end
-  end
-
   def assign_winner_of(auction)
     entity = bidder_of(auction)
     entity.auctions << auction
