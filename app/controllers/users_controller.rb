@@ -7,22 +7,15 @@ class UsersController < ApplicationController
   def create
     @user = User.create(set_user)
     if @user.save
-      session[:user_id] = @user.id
-      role = Role.find_by(name: "registered_user")
-      UserRole.create(user_id: @user.id, role_id: role.id)
-      redirect_to dashboard_path
+      create_successfull
     else
-      flash[:error] = {message: @user.errors.full_messages.join(", "), color: "red"}
-      redirect_to new_user_path
+      create_unsuccessfull
     end
   end
 
   def show
     if session[:user_id]
-      @user = current_user
-      @businesses = @user.businesses
-      @humans = @user.humans
-      @auctions = current_user.auctions_won(current_user)
+      @user_object = UserPresenter.new(current_user)
     else
       flash[:error] = {message: "Must be signed in to see dashboard.", color: "red"}
       redirect_to '/'
@@ -42,10 +35,7 @@ class UsersController < ApplicationController
   def assign_business
     @user = current_user
     @business = Business.find(params[:format])
-    session[:business_id] = @business.id
-    BusinessUser.create(business_id: @business.id, user_id: current_user.id)
-    role = Role.find_by(name: "business_admin")
-    current_user.user_roles << UserRole.create(business_id: @business.id, role_id: role.id)
+    setup_business_relationships
     redirect_to admin_business_path(@business.url, @business.id)
   end
 
@@ -68,4 +58,22 @@ class UsersController < ApplicationController
       )
     end
 
+    def create_successfull
+      session[:user_id] = @user.id
+      role = Role.find_by(name: "registered_user")
+      UserRole.create(user_id: @user.id, role_id: role.id)
+      redirect_to dashboard_path
+    end
+
+    def create_unsuccessfull
+      flash[:error] = {message: @user.errors.full_messages.join(", "), color: "red"}
+      redirect_to new_user_path
+    end
+
+    def setup_business_relationships
+      session[:business_id] = @business.id
+      BusinessUser.create(business_id: @business.id, user_id: current_user.id)
+      role = Role.find_by(name: "business_admin")
+      current_user.user_roles << UserRole.create(business_id: @business.id, role_id: role.id)
+    end
 end

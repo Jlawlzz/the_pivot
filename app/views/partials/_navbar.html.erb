@@ -12,7 +12,6 @@
       </ul>
       <ul class="left hide-on-med-and-down">
         <% if current_user %>
-
         <li> <%= link_to "Logged in as #{current_user.first_name}", '/dashboard'%></li>
 
         <li> <%= link_to "Logout", logout_path, method: :delete %></li>
